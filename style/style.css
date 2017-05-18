@@ -18,7 +18,57 @@ img#TOT {
 }
 
 #nav-container div.item:hover {
-  background-color: transparent;
-  box-shadow: none;
-  border-color: darkred;
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+/* TITLE */
+/*.badge-title {
+  -webkit-transform: scale(0.35);
+  -ms-transform: scale(0.35);
+  transform: scale(0.35);
+}*/
+
+/* CARDS */
+.card-header {
+  background-color: green !important;
+}
+
+div.ui.fluid.card div.card-header div.card-label {
+  color: white;
+}
+
+/* TABLE */
+#standings-table {
+  padding: 0px;
+}
+
+.ui.celled.table tr td, .ui.celled.table tr th {
+  padding: 5px;
+}
+
+/* MOBILE */
+@media screen and (max-width:600px){
+    .mobile-table {
+        display: none;
+    }
+}
+
+@media screen and (min-width:600px) and (max-width:768px){
+    .desktop-table {
+        display: none;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:990px){
+    .mobile-table {
+        display: none;
+    }
+}
+
+@media screen and (min-width:990px){
+    .desktop-table {
+        display: none;
+    }
 }
