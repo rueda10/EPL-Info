@@ -31,21 +31,39 @@ h1.ui.center.aligned.header {
 }
 
 /* CARDS */
-.card-header {
+div.fluid.card div.card-header {
   background-color: green !important;
+  padding: 12px;
 }
 
 div.ui.fluid.card div.card-header div.card-label {
   color: white;
 }
 
+/* INJURIES AND SUSPENSIONS */
+#player-news {
+  padding: 0px 0px;
+}
+
+/* PLAYER DISPLAY */
+#player-display {
+  margin-top: 15px;
+}
+
 /* TABLE */
 #standings-table {
   padding: 0px;
+  border: 0px;
 }
 
 .ui.celled.table tr td, .ui.celled.table tr th {
   padding: 4px;
+}
+
+/* TEAM NEWS */
+#team-news {
+  padding: 0px 0px;
+  border: 0px;
 }
 
 /* MOBILE */

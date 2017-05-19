@@ -19,8 +19,8 @@ class TeamNews extends Component {
         if (headline.webTitle.toLowerCase().includes(selectedClub.alias[i].toLowerCase()) ||
             headline.webUrl.toLowerCase().includes(selectedClub.alias[i].toLowerCase())) {
               return (
-                <div key={headline.webUrl}>
-                  <h2 className="ui sub header">{headline.webTitle}</h2>
+                <div className="item" key={headline.webUrl}>
+                  <div className="description">{headline.webTitle}</div>
                   <div><a href={headline.webUrl} target="_blank">Read More...</a></div>
                 </div>
               );
@@ -50,8 +50,10 @@ class TeamNews extends Component {
             Team News
           </div>
         </div>
-        <div className="content">
-          {this.renderTeamNews()}
+        <div className="content" id="team-news">
+          <div className="ui celled list">
+            {this.renderTeamNews()}
+          </div>
         </div>
       </div>
     );

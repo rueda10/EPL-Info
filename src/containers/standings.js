@@ -86,16 +86,16 @@ class Standings extends Component {
           <table className="ui celled compact unstackable striped table">
             <thead>
               <tr>
-                <th className="center aligned">Pos</th>
+                <th title="Position" className="center aligned">Pos</th>
                 <th className="center aligned">Club</th>
-                <th className="center aligned">P</th>
-                <th className="center aligned">W</th>
-                <th className="center aligned">D</th>
-                <th className="center aligned">L</th>
-                <th className="center aligned">GF</th>
-                <th className="center aligned">GA</th>
-                <th className="center aligned">GD</th>
-                <th className="center aligned">Pts</th>
+                <th title="Matches Played" className="center aligned">P</th>
+                <th title="Matches Won" className="center aligned">W</th>
+                <th title="Matches Drawn" className="center aligned">D</th>
+                <th title="Matches Lost" className="center aligned">L</th>
+                <th title="Goals Scored" className="center aligned">GF</th>
+                <th title="Goals Conceded" className="center aligned">GA</th>
+                <th title="Goal Difference" className="center aligned">GD</th>
+                <th title="Points" className="center aligned">Pts</th>
               </tr>
             </thead>
             <tbody>

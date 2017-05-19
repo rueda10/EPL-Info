@@ -5,6 +5,7 @@ export default class AlternateImage extends Component {
     super(props);
 
     this.state = {
+      classes: this.props.classes,
       src: this.props.src
     }
   }
@@ -17,7 +18,7 @@ export default class AlternateImage extends Component {
 
   render() {
     return (
-      <img className={this.props.classes} src={this.state.src} onError={this.onError.bind(this)}/>
+      <img className={this.state.classes} src={this.state.src} onError={this.onError.bind(this)}/>
     );
   }
 }

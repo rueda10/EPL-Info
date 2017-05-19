@@ -1,20 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectClub } from '../actions/index';
+import { selectClub } from '../actions/select_club';
+import { selectPlayer } from '../actions/select_player';
 import { bindActionCreators } from 'redux';
 
 class ClubNavBar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onBadgeClick = this.onBadgeClick.bind(this);
+    this.props.selectClub(this.props.clubs[0]);
+  }
+
   renderNavBar() {
     return this.props.clubs.map((club) => {
       return (
         <div
-          onClick={() => this.props.selectClub(club)}
+          onClick={this.onBadgeClick.bind(this, club)}
           key={club.key_name}
-          className="item">
+          className="item"
+          title={club.name}>
             <img className="badge-icon" id={club.short_name} src={club.badge} />
         </div>
       );
     });
+  }
+
+  onBadgeClick(club) {
+    this.props.selectClub(club);
+    this.props.selectPlayer(null);
   }
 
   render() {
@@ -41,7 +55,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   // Whenever selectClub is called, the result should be passed
   // to all of our reducers
-  return bindActionCreators({ selectClub: selectClub }, dispatch);
+  return bindActionCreators({ selectClub, selectPlayer }, dispatch);
 }
 
 // promote ClubNavBar from a component to a container - it needs

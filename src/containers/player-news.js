@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPlayerData } from '../actions/ajax_calls';
-
-import AlternateImage from '../components/alternate-image';
+import { selectPlayer } from '../actions/select_player';
 
 const PHOTOS_URL = 'https://ismdj.scdn5.secure.raxcdn.com/static/plfpl/img/shirts/photos/';
 
@@ -32,9 +31,9 @@ class PlayerNews extends Component {
         if (player.status === "i" || player.status === "d" || player.status === "s") {
           return (
             <div key={player.code} className="item">
-              <AlternateImage classes="ui mini rounded image" src={PHOTOS_URL + player.photo}/>
+              <img className="ui mini rounded image" src={PHOTOS_URL + player.photo} onError={this.handleImageError}/>
               <div className="content">
-                <a className="header">{player.first_name} {player.second_name}</a>
+                <a className="header" onClick={() => this.props.selectPlayer(player)}>{player.first_name} {player.second_name}</a>
                 <div className="description">{player.news}</div>
               </div>
             </div>
@@ -43,6 +42,10 @@ class PlayerNews extends Component {
       }
     });
 
+  }
+
+  handleImageError(e) {
+    e.target.src = '../../images/avatar.jpg';
   }
 
   render() {
@@ -62,12 +65,12 @@ class PlayerNews extends Component {
     return (
       <div className="ui fluid card">
         <div className="content card-header">
-          <div className="header card-label">
+          <div className="header card-label green">
             Injuries / Suspensions
           </div>
         </div>
-        <div className="content">
-          <div className="ui list">
+        <div className="content" id="player-news">
+          <div className="ui celled list">
             {this.renderPlayerData()}
           </div>
         </div>
@@ -85,7 +88,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchPlayerData }, dispatch);
+  return bindActionCreators({ fetchPlayerData, selectPlayer }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerNews);

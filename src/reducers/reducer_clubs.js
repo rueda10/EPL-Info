@@ -3,7 +3,7 @@ export default function () {
     {
       name: 'Arsenal FC',
       short_name: 'ARS',
-      key_name: 'arsenal',
+      key_name: 'Arsenal',
       alias: [
         'arsenal',
         'gunners'
@@ -13,7 +13,7 @@ export default function () {
     {
       name: 'AFC Bournemouth',
       short_name: 'BOU',
-      key_name: 'bournemouth',
+      key_name: 'Bournemouth',
       alias: [
         'bournemouth',
         'cherries'
@@ -23,7 +23,7 @@ export default function () {
     {
       name: 'Burnley FC',
       short_name: 'BUR',
-      key_name: 'burnley',
+      key_name: 'Burnley',
       alias: [
         'burnley',
         'clarets'
@@ -33,7 +33,7 @@ export default function () {
     {
       name: 'Chelsea FC',
       short_name: 'CHE',
-      key_name: 'chelsea',
+      key_name: 'Chelsea',
       alias: [
         'chelsea',
         'blues'
@@ -43,7 +43,7 @@ export default function () {
     {
       name: 'Crystal Palace FC',
       short_name: 'CRY',
-      key_name: 'palace',
+      key_name: 'Palace',
       alias: [
         'palace',
         'eagles'
@@ -53,7 +53,7 @@ export default function () {
     {
       name: 'Everton FC',
       short_name: 'EVE',
-      key_name: 'everton',
+      key_name: 'Everton',
       alias: [
         'everton',
         'toffees'
@@ -63,7 +63,7 @@ export default function () {
     {
       name: 'Hull City FC',
       short_name: 'HUL',
-      key_name: 'hull',
+      key_name: 'Hull',
       alias: [
         'hull',
         'tigers'
@@ -73,7 +73,7 @@ export default function () {
     {
       name: 'Leicester City FC',
       short_name: 'LEI',
-      key_name: 'leicester',
+      key_name: 'Leicester',
       alias: [
         'leicester',
         'foxes'
@@ -83,7 +83,7 @@ export default function () {
     {
       name: 'Liverpool FC',
       short_name: 'LIV',
-      key_name: 'liverpool',
+      key_name: 'Liverpool',
       alias: [
         'liverpool',
         'reds'
@@ -93,7 +93,7 @@ export default function () {
     {
       name: 'Manchester City FC',
       short_name: 'MCI',
-      key_name: 'mancity',
+      key_name: 'Man City',
       alias: [
         'manchester city',
         'man city',
@@ -104,7 +104,7 @@ export default function () {
     {
       name: 'Manchester United FC',
       short_name: 'MUN',
-      key_name: 'manunited',
+      key_name: 'Man United',
       alias: [
         'manchester united',
         'man united',
@@ -115,7 +115,7 @@ export default function () {
     {
       name: 'Middlesbrough FC',
       short_name: 'MID',
-      key_name: 'middlesbrough',
+      key_name: 'Boro',
       alias: [
         'middlesbrough',
         'boro'
@@ -125,7 +125,7 @@ export default function () {
     {
       name: 'Southampton FC',
       short_name: 'SOU',
-      key_name: 'southampton',
+      key_name: 'Southampton',
       alias: [
         'southampton',
         'saints'
@@ -135,7 +135,7 @@ export default function () {
     {
       name: 'Stoke City FC',
       short_name: 'STK',
-      key_name: 'stoke',
+      key_name: 'Stoke',
       alias: [
         'stoke',
         'potters'
@@ -145,7 +145,7 @@ export default function () {
     {
       name: 'Sunderland AFC',
       short_name: 'SUN',
-      key_name: 'sunderland',
+      key_name: 'Sunderland',
       alias: [
         'sunderland',
         'black cats'
@@ -155,7 +155,7 @@ export default function () {
     {
       name: 'Swansea City FC',
       short_name: 'SWA',
-      key_name: 'swansea',
+      key_name: 'Swansea',
       alias: [
         'swansea',
         'swans'
@@ -165,7 +165,7 @@ export default function () {
     {
       name: 'Tottenham Hotspur FC',
       short_name: 'TOT',
-      key_name: 'tottenham',
+      key_name: 'Tottenham',
       alias: [
         'tottenham',
         'spurs'
@@ -174,7 +174,7 @@ export default function () {
     },{
       name: 'Watford FC',
       short_name: 'WAT',
-      key_name: 'watford',
+      key_name: 'Watford',
       alias: [
         'watford',
         'hornets'
@@ -183,7 +183,7 @@ export default function () {
     },{
       name: 'West Bromwich Albion FC',
       short_name: 'WBA',
-      key_name: 'westbrom',
+      key_name: 'West Brom',
       alias: [
         'west bromwich',
         'west brom',
@@ -194,7 +194,7 @@ export default function () {
     },{
       name: 'West Ham United FC',
       short_name: 'WHU',
-      key_name: 'westham',
+      key_name: 'West Ham',
       alias: [
         'west ham',
         'hammers',
