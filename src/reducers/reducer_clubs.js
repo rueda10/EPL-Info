@@ -197,6 +197,7 @@ export default function () {
       key_name: 'westham',
       alias: [
         'west ham',
+        'hammers',
         'irons'
       ],
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t21.svg"

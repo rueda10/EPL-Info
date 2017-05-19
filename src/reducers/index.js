@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   clubs: ClubsReducer,
   activeClub: ActiveClub,
   leagueData: LeagueDataReducer,
-  news: NewsReducer,
+  teamNews: NewsReducer,
   players: PlayersReducer
 });
 

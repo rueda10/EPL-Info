@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import TeamNavBar from '../containers/team-nav-bar';
 import TeamTitle from '../containers/team-title';
 import PlayerNews from '../containers/player-news';
-// import TeamNews from '../components/team-news';
+import TeamNews from '../containers/team-news';
 import Standings from '../containers/standings';
 // import TeamInformation from '../components/team-information';
 // import PlayerInformation from '../containers/player-information';
@@ -18,11 +18,14 @@ export default class App extends Component {
         <TeamNavBar />
         <TeamTitle />
         <div className="ui three column stackable grid container">
-          <div className="four wide column">
+          <div className="five wide column">
             <PlayerNews />
           </div>
-          <div className="nine wide column">
+          <div className="seven wide column">
             <Standings />
+          </div>
+          <div className="four wide column">
+            <TeamNews />
           </div>
         </div>
         {/* <TeamNews />

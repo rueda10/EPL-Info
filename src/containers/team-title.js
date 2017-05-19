@@ -10,7 +10,7 @@ class TeamTitle extends Component {
 
     return (
       <h1 className="ui center aligned header">
-          {this.props.club.name}
+        {this.props.club.name.toUpperCase()}
       </h1>
     );
   }

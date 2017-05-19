@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPlayerData } from '../actions/ajax_calls';
 
+import AlternateImage from '../components/alternate-image';
+
+const PHOTOS_URL = 'https://ismdj.scdn5.secure.raxcdn.com/static/plfpl/img/shirts/photos/';
+
 class PlayerNews extends Component {
   constructor(props) {
     super(props);
@@ -27,9 +31,12 @@ class PlayerNews extends Component {
       if (teamId === player.team_code) {
         if (player.status === "i" || player.status === "d" || player.status === "s") {
           return (
-            <div key={player.code}>
-              <h2 className="ui sub header">{player.first_name} {player.second_name}</h2>
-              <div>{player.news}</div>
+            <div key={player.code} className="item">
+              <AlternateImage classes="ui mini rounded image" src={PHOTOS_URL + player.photo}/>
+              <div className="content">
+                <a className="header">{player.first_name} {player.second_name}</a>
+                <div className="description">{player.news}</div>
+              </div>
             </div>
           );
         }
@@ -56,11 +63,13 @@ class PlayerNews extends Component {
       <div className="ui fluid card">
         <div className="content card-header">
           <div className="header card-label">
-            Injuries
+            Injuries / Suspensions
           </div>
         </div>
         <div className="content">
-          {this.renderPlayerData()}
+          <div className="ui list">
+            {this.renderPlayerData()}
+          </div>
         </div>
       </div>
     );

@@ -1,11 +1,13 @@
 /* TEAM NAV */
 #nav-container {
   text-align: center;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 #club-navbar {
   display: -webkit-inline-box;
+  font-size: 11pt;
 }
 
 img#TOT {
@@ -24,11 +26,9 @@ img#TOT {
 }
 
 /* TITLE */
-/*.badge-title {
-  -webkit-transform: scale(0.35);
-  -ms-transform: scale(0.35);
-  transform: scale(0.35);
-}*/
+h1.ui.center.aligned.header {
+  margin: 20px;
+}
 
 /* CARDS */
 .card-header {
@@ -45,7 +45,7 @@ div.ui.fluid.card div.card-header div.card-label {
 }
 
 .ui.celled.table tr td, .ui.celled.table tr th {
-  padding: 5px;
+  padding: 4px;
 }
 
 /* MOBILE */
