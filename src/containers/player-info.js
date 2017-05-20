@@ -14,6 +14,7 @@ class PlayerInfo extends Component {
     super(props);
     this.props.fetchPlayerData();
     this.onPlayerChange = this.onPlayerChange.bind(this);
+    this.handleImageError = this.handleImageError.bind(this);
   }
 
   renderRoster() {
@@ -54,16 +55,15 @@ class PlayerInfo extends Component {
 
     return (
       <div>
-        <Dropdown onChange={this.onPlayerChange} placeholder='Select Player' text='Select Player' fluid selection options={playerOptions} />
+        <Dropdown onChange={this.onPlayerChange} onError={this.handleImageError} placeholder='Select Player' text='Select Player' fluid selection options={playerOptions} />
         <DisplayPlayer />
       </div>
     );
 
   }
 
-  insert(element, array) {
-
-    return array;
+  handleImageError(e) {
+    e.target.src = '../../images/avatar.jpg';
   }
 
   onPlayerChange(e, data) {

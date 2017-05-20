@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Icon, List } from 'semantic-ui-react'
 
 import AlternateImage from '../components/alternate-image';
 
@@ -26,29 +27,60 @@ class DisplayPlayer extends Component {
       position = 'Forward';
     }
 
+    var playerInfo = (
+        <List>
+          <List.Item as='div'>
+            <Icon name='right triangle' />
+            <List.Content>
+              <List.Header>Goals Scored: {player.goals_scored}</List.Header>
+            </List.Content>
+          </List.Item>
+          <List.Item as='div'>
+            <Icon name='right triangle' />
+            <List.Content>
+              <List.Header>Assists: {player.assists}</List.Header>
+            </List.Content>
+          </List.Item>
+          <List.Item as='div'>
+            <Icon name='right triangle' />
+            <List.Content>
+              <List.Header>Yellow Cards: {player.yellow_cards}</List.Header>
+            </List.Content>
+          </List.Item>
+          <List.Item as='div'>
+            <Icon name='right triangle' />
+            <List.Content>
+              <List.Header>Red Cards: {player.red_cards}</List.Header>
+            </List.Content>
+          </List.Item>
+        </List>
+    );
+
     var squadNumber = player.squad_number;
     if (squadNumber === null) {
       squadNumber = 'N/A';
+    } else {
+      squadNumber = `#${squadNumber}`;
     }
 
     return (
-      <div className="ui items">
-        <div className="item">
-          <div className="ui tiny rounded image">
-            <img src={PHOTOS_URL + player.photo} onError={this.handleImageError}/>
-          </div>
-          <div className="content">
-            <a className="header">{player.first_name} {player.second_name}</a>
-            <div className="meta">
-              <span>#{squadNumber} - {position}</span>
+      <div>
+        <div className="ui items">
+          <div className="item">
+            <div className="ui tiny rounded image">
+              <img className="player-display-pic" src={PHOTOS_URL + player.photo} onError={this.handleImageError}/>
             </div>
-            <div className="description">
-              <p></p>
-            </div>
-            <div className="extra">
-              Additional Details
+            <div className="middle aligned content">
+              <a className="header">{player.first_name} {player.second_name}</a>
+              <div className="meta">
+                <div>{position}</div>
+                <div>{squadNumber}</div>
+              </div>
             </div>
           </div>
+        </div>
+        <div>
+          {playerInfo}
         </div>
       </div>
     );

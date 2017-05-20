@@ -50,6 +50,18 @@ div.ui.fluid.card div.card-header div.card-label {
   margin-top: 15px;
 }
 
+div.ui.items {
+  margin-bottom: 10px;
+}
+
+div.ui.rounded.image {
+  border: thin solid black;
+}
+
+.ui.selection.dropdown .menu>.item {
+  padding: 3px 15px !important;
+}
+
 /* TABLE */
 #standings-table {
   padding: 0px;
