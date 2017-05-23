@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Dimmer, Loader, Card, Table } from 'semantic-ui-react'
 import { fetchLeagueData } from '../actions/ajax_calls';
 
 class Standings extends Component {
@@ -23,37 +24,37 @@ class Standings extends Component {
         }
       });
 
-      if (team.teamName.toLowerCase() === selectedClub.name.toLowerCase()) {
+      if (team.teamName.toLowerCase().includes(selectedClub.name.toLowerCase())) {
         return (
-          <tr key={team.teamName} className="negative">
-            <td className="center aligned">{team.position}</td>
-            <td className="desktop-table">{shortName}</td>
-            <td className="mobile-table">{team.teamName}</td>
-            <td className="center aligned">{team.playedGames}</td>
-            <td className="center aligned">{team.wins}</td>
-            <td className="center aligned">{team.draws}</td>
-            <td className="center aligned">{team.losses}</td>
-            <td className="center aligned">{team.goals}</td>
-            <td className="center aligned">{team.goalsAgainst}</td>
-            <td className="center aligned">{team.goalDifference}</td>
-            <td className="center aligned">{team.points}</td>
-          </tr>
+          <Table.Row key={team.teamName} className="negative">
+            <Table.Cell textAlign="center">{team.position}</Table.Cell>
+            <Table.Cell className="desktop-table">{shortName}</Table.Cell>
+            <Table.Cell className="mobile-table">{team.teamName}</Table.Cell>
+            <Table.Cell textAlign="center">{team.playedGames}</Table.Cell>
+            <Table.Cell textAlign="center">{team.wins}</Table.Cell>
+            <Table.Cell textAlign="center">{team.draws}</Table.Cell>
+            <Table.Cell textAlign="center">{team.losses}</Table.Cell>
+            <Table.Cell textAlign="center">{team.goals}</Table.Cell>
+            <Table.Cell textAlign="center">{team.goalsAgainst}</Table.Cell>
+            <Table.Cell textAlign="center">{team.goalDifference}</Table.Cell>
+            <Table.Cell textAlign="center">{team.points}</Table.Cell>
+          </Table.Row>
         );
       } else {
         return (
-          <tr key={team.teamName}>
-            <td className="center aligned">{team.position}</td>
-            <td className="desktop-table">{shortName}</td>
-            <td className="mobile-table">{team.teamName}</td>
-            <td className="center aligned">{team.playedGames}</td>
-            <td className="center aligned">{team.wins}</td>
-            <td className="center aligned">{team.draws}</td>
-            <td className="center aligned">{team.losses}</td>
-            <td className="center aligned">{team.goals}</td>
-            <td className="center aligned">{team.goalsAgainst}</td>
-            <td className="center aligned">{team.goalDifference}</td>
-            <td className="center aligned">{team.points}</td>
-          </tr>
+          <Table.Row key={team.teamName}>
+            <Table.Cell textAlign="center">{team.position}</Table.Cell>
+            <Table.Cell className="desktop-table">{shortName}</Table.Cell>
+            <Table.Cell className="mobile-table">{team.teamName}</Table.Cell>
+            <Table.Cell textAlign="center">{team.playedGames}</Table.Cell>
+            <Table.Cell textAlign="center">{team.wins}</Table.Cell>
+            <Table.Cell textAlign="center">{team.draws}</Table.Cell>
+            <Table.Cell textAlign="center">{team.losses}</Table.Cell>
+            <Table.Cell textAlign="center">{team.goals}</Table.Cell>
+            <Table.Cell textAlign="center">{team.goalsAgainst}</Table.Cell>
+            <Table.Cell textAlign="center">{team.goalDifference}</Table.Cell>
+            <Table.Cell textAlign="center">{team.points}</Table.Cell>
+          </Table.Row>
         );
       }
 
@@ -68,42 +69,38 @@ class Standings extends Component {
     if (!this.props.leagueData) {
       return (
         <div>
-          <div className="ui active inverted dimmer">
-            <div className="ui text loader">Loading</div>
-          </div>
+          <Dimmer active inverted>
+            <Loader>Loading</Loader>
+          </Dimmer>
         </div>
       )
     }
 
     return (
-      <div className="ui fluid card">
-        <div className="content card-header">
-          <div className="header card-label">
-            Standings
-          </div>
-        </div>
-        <div className="content" id="standings-table">
-          <table className="ui celled compact unstackable striped table">
-            <thead>
-              <tr>
-                <th title="Position" className="center aligned">Pos</th>
-                <th className="center aligned">Club</th>
-                <th title="Matches Played" className="center aligned">P</th>
-                <th title="Matches Won" className="center aligned">W</th>
-                <th title="Matches Drawn" className="center aligned">D</th>
-                <th title="Matches Lost" className="center aligned">L</th>
-                <th title="Goals Scored" className="center aligned">GF</th>
-                <th title="Goals Conceded" className="center aligned">GA</th>
-                <th title="Goal Difference" className="center aligned">GD</th>
-                <th title="Points" className="center aligned">Pts</th>
-              </tr>
-            </thead>
-            <tbody>
+      <Card fluid color="green">
+        <Card.Content header='Standings' />
+        <Card.Content>
+          <Table celled compact unstackable striped>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell textAlign="center" title="Position">Pos</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">Club</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center" title="Matches Played">P</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center" title="Matches Won">W</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center" title="Matches Drawn">D</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center" title="Matches Lost">L</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center" title="Goals Scored">GS</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center" title="Goals Against">GA</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center" title="Goal Difference">GD</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center" title="Points">Pts</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
               {this.renderTable()}
-            </tbody>
-          </table>
-        </div>
-      </div>
+            </Table.Body>
+          </Table>
+        </Card.Content>
+      </Card>
     );
   }
 }

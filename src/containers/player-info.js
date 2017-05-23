@@ -22,7 +22,10 @@ class PlayerInfo extends Component {
     const players = this.props.players.elements;
     const selectedClub = this.props.club;
     var teamId = -1;
-    var playerOptions = [];
+    var goalKeeperOptions = [];
+    var defenderOptions = [];
+    var midfielderOptions = [];
+    var forwardOptions = [];
 
     teams.forEach(function(team, index) {
       if (selectedClub.short_name.toLowerCase() === team.short_name.toLowerCase()) {
@@ -46,16 +49,37 @@ class PlayerInfo extends Component {
           data: player
         }
 
-        playerOptions.push(playerOption);
-        playerOptions.sort(function(a, b) {
-          return a.num - b.num;
-        });
+        if (player.element_type === 1) {
+          goalKeeperOptions.push(playerOption);
+          goalKeeperOptions.sort(function(a, b) {
+            return a.num - b.num;
+          });
+        } else if (player.element_type === 2) {
+          defenderOptions.push(playerOption);
+          defenderOptions.sort(function(a, b) {
+            return a.num - b.num;
+          });
+        } else if (player.element_type === 3) {
+          midfielderOptions.push(playerOption);
+          midfielderOptions.sort(function(a, b) {
+            return a.num - b.num;
+          });
+        } else if (player.element_type === 4) {
+          forwardOptions.push(playerOption);
+          forwardOptions.sort(function(a, b) {
+            return a.num - b.num;
+          });
+        }
+
       }
     });
 
     return (
       <div>
-        <Dropdown onChange={this.onPlayerChange} onError={this.handleImageError} placeholder='Select Player' text='Select Player' fluid selection options={playerOptions} />
+        <Dropdown onChange={this.onPlayerChange} onError={this.handleImageError} text='Select Goalkeeper' fluid selection options={goalKeeperOptions} />
+        <Dropdown onChange={this.onPlayerChange} onError={this.handleImageError} text='Select Defender' fluid selection options={defenderOptions} />
+        <Dropdown onChange={this.onPlayerChange} onError={this.handleImageError} text='Select Midfielder' fluid selection options={midfielderOptions} />
+        <Dropdown onChange={this.onPlayerChange} onError={this.handleImageError} text='Select Forward' fluid selection options={forwardOptions} />
         <DisplayPlayer />
       </div>
     );

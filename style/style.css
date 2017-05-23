@@ -31,12 +31,19 @@ h1.ui.center.aligned.header {
 }
 
 /* CARDS */
-div.fluid.card div.card-header {
-  background-color: green !important;
-  padding: 12px;
+.ui.fluid.card > .content {
+  padding: 0px 0px;
+  border: 0px;
 }
 
-div.ui.fluid.card div.card-header div.card-label {
+.content:first-child {
+  background-color: green !important;
+  padding: 10px 10px 6px 10px !important;
+  border-radius: .28571429rem .28571429rem 0 0!important;
+  border-top: none!important;
+}
+
+.ui.fluid.card > .content > .header {
   color: white;
 }
 
@@ -73,10 +80,7 @@ div.ui.rounded.image {
 }
 
 /* TEAM NEWS */
-#team-news {
-  padding: 0px 0px;
-  border: 0px;
-}
+
 
 /* MOBILE */
 @media screen and (max-width:600px){

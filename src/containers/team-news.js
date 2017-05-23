@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Dimmer, Loader, Card, List } from 'semantic-ui-react';
+
 import { fetchTeamNews } from '../actions/ajax_calls';
 
 class TeamNews extends Component {
@@ -19,10 +21,10 @@ class TeamNews extends Component {
         if (headline.webTitle.toLowerCase().includes(selectedClub.alias[i].toLowerCase()) ||
             headline.webUrl.toLowerCase().includes(selectedClub.alias[i].toLowerCase())) {
               return (
-                <div className="item" key={headline.webUrl}>
-                  <div className="description">{headline.webTitle}</div>
+                <List.Item key={headline.webUrl}>
+                  <List.Description>{headline.webTitle}</List.Description>
                   <div><a href={headline.webUrl} target="_blank">Read More...</a></div>
-                </div>
+                </List.Item>
               );
         }
       }
@@ -31,31 +33,27 @@ class TeamNews extends Component {
 
   render() {
     if (!this.props.selectedClub) {
-      return <div></div>
+      return <div></div>;
     }
     if (!this.props.teamNews) {
       return (
         <div>
-          <div className="ui active inverted dimmer">
-            <div className="ui text loader">Loading</div>
-          </div>
+          <Dimmer active inverted>
+            <Loader>Loading</Loader>
+          </Dimmer>
         </div>
-      )
+      );
     }
 
     return (
-      <div className="ui fluid card">
-        <div className="content card-header">
-          <div className="header card-label">
-            Team News
-          </div>
-        </div>
-        <div className="content" id="team-news">
-          <div className="ui celled list">
+      <Card fluid color="green">
+        <Card.Content header='Team News' />
+        <Card.Content>
+          <List celled>
             {this.renderTeamNews()}
-          </div>
-        </div>
-      </div>
+          </List>
+        </Card.Content>
+      </Card>
     );
   }
 }

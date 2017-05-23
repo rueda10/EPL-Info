@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Icon, List } from 'semantic-ui-react'
-
-import AlternateImage from '../components/alternate-image';
+import { Icon, List } from 'semantic-ui-react';
+import PlayerStat from '../components/player-stat';
 
 const PHOTOS_URL = 'https://ismdj.scdn5.secure.raxcdn.com/static/plfpl/img/shirts/photos/';
 
@@ -15,46 +14,73 @@ class DisplayPlayer extends Component {
 
   renderPlayerData() {
     const player = this.props.activePlayer;
+    var goalkeeperStats;
 
     var position;
+    var playerInfo;
+    var games = Math.round(player.minutes / 90);
+    var minutesPlayersContent = `${player.minutes} (${games} Games)`;
+
     if (player.element_type === 1) {
       position = 'Goalkeeper';
+      playerInfo = (
+        <List>
+          <PlayerStat label="Minutes" content={minutesPlayersContent} />
+          <PlayerStat label="Saves" content={player.saves} />
+          <PlayerStat label="Penalties Saved" content={player.penalties_saved} />
+          <PlayerStat label="Clean Sheets" content={player.clean_sheets} />
+          <PlayerStat label="Goals Conceded" content={player.goals_conceded} />
+          <PlayerStat label="Own Goals" content={player.own_goals} />
+          <PlayerStat label="Yellow Cards" content={player.yellow_cards} />
+          <PlayerStat label="Red Cards" content={player.red_cards} />
+          <PlayerStat label="Points Per Game" content={player.points_per_game} />
+        </List>
+      )
     } else if (player.element_type === 2) {
       position = 'Defender';
+      playerInfo = (
+        <List>
+          <PlayerStat label="Minutes" content={minutesPlayersContent} />
+          <PlayerStat label="Clean Sheets" content={player.clean_sheets} />
+          <PlayerStat label="Goals Conceded" content={player.goals_conceded} />
+          <PlayerStat label="Own Goals" content={player.own_goals} />
+          <PlayerStat label="Goals Scored" content={player.goals_scored} />
+          <PlayerStat label="Penalties Missed" content={player.penalties_missed} />
+          <PlayerStat label="Assists" content={player.assists} />
+          <PlayerStat label="Yellow Cards" content={player.yellow_cards} />
+          <PlayerStat label="Red Cards" content={player.red_cards} />
+          <PlayerStat label="Points Per Game" content={player.points_per_game} />
+        </List>
+      )
     } else if (player.element_type === 3) {
       position = 'Midfielder';
+      playerInfo = (
+        <List>
+          <PlayerStat label="Minutes" content={minutesPlayersContent} />
+          <PlayerStat label="Goals Scored" content={player.goals_scored} />
+          <PlayerStat label="Penalties Missed" content={player.penalties_missed} />
+          <PlayerStat label="Assists" content={player.assists} />
+          <PlayerStat label="Own Goals" content={player.own_goals} />
+          <PlayerStat label="Yellow Cards" content={player.yellow_cards} />
+          <PlayerStat label="Red Cards" content={player.red_cards} />
+          <PlayerStat label="Points Per Game" content={player.points_per_game} />
+        </List>
+      )
     } else if (player.element_type === 4) {
       position = 'Forward';
-    }
-
-    var playerInfo = (
+      playerInfo = (
         <List>
-          <List.Item as='div'>
-            <Icon name='right triangle' />
-            <List.Content>
-              <List.Header>Goals Scored: {player.goals_scored}</List.Header>
-            </List.Content>
-          </List.Item>
-          <List.Item as='div'>
-            <Icon name='right triangle' />
-            <List.Content>
-              <List.Header>Assists: {player.assists}</List.Header>
-            </List.Content>
-          </List.Item>
-          <List.Item as='div'>
-            <Icon name='right triangle' />
-            <List.Content>
-              <List.Header>Yellow Cards: {player.yellow_cards}</List.Header>
-            </List.Content>
-          </List.Item>
-          <List.Item as='div'>
-            <Icon name='right triangle' />
-            <List.Content>
-              <List.Header>Red Cards: {player.red_cards}</List.Header>
-            </List.Content>
-          </List.Item>
+          <PlayerStat label="Minutes" content={minutesPlayersContent} />
+          <PlayerStat label="Goals Scored" content={player.goals_scored} />
+          <PlayerStat label="Penalties Missed" content={player.penalties_missed} />
+          <PlayerStat label="Assists" content={player.assists} />
+          <PlayerStat label="Own Goals" content={player.own_goals} />
+          <PlayerStat label="Yellow Cards" content={player.yellow_cards} />
+          <PlayerStat label="Red Cards" content={player.red_cards} />
+          <PlayerStat label="Points Per Game" content={player.points_per_game} />
         </List>
-    );
+      )
+    }
 
     var squadNumber = player.squad_number;
     if (squadNumber === null) {
@@ -98,7 +124,9 @@ class DisplayPlayer extends Component {
       </div>
     );
   }
-
+// code cleanup
+// testing
+// documentation
   handleImageError(e) {
     e.target.src = '../../images/avatar.jpg';
   }

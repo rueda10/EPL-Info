@@ -1,7 +1,7 @@
 export default function () {
   return [
     {
-      name: 'Arsenal FC',
+      name: 'Arsenal',
       short_name: 'ARS',
       key_name: 'Arsenal',
       alias: [
@@ -21,7 +21,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t91.svg"
     },
     {
-      name: 'Burnley FC',
+      name: 'Burnley',
       short_name: 'BUR',
       key_name: 'Burnley',
       alias: [
@@ -31,7 +31,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t90.svg"
     },
     {
-      name: 'Chelsea FC',
+      name: 'Chelsea',
       short_name: 'CHE',
       key_name: 'Chelsea',
       alias: [
@@ -41,7 +41,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t8.svg"
     },
     {
-      name: 'Crystal Palace FC',
+      name: 'Crystal Palace',
       short_name: 'CRY',
       key_name: 'Palace',
       alias: [
@@ -51,7 +51,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t31.svg"
     },
     {
-      name: 'Everton FC',
+      name: 'Everton',
       short_name: 'EVE',
       key_name: 'Everton',
       alias: [
@@ -61,7 +61,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t11.svg"
     },
     {
-      name: 'Hull City FC',
+      name: 'Hull City',
       short_name: 'HUL',
       key_name: 'Hull',
       alias: [
@@ -71,7 +71,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t88.svg"
     },
     {
-      name: 'Leicester City FC',
+      name: 'Leicester City',
       short_name: 'LEI',
       key_name: 'Leicester',
       alias: [
@@ -81,7 +81,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t13.svg"
     },
     {
-      name: 'Liverpool FC',
+      name: 'Liverpool',
       short_name: 'LIV',
       key_name: 'Liverpool',
       alias: [
@@ -91,7 +91,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t14.svg"
     },
     {
-      name: 'Manchester City FC',
+      name: 'Manchester City',
       short_name: 'MCI',
       key_name: 'Man City',
       alias: [
@@ -102,7 +102,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t43.svg"
     },
     {
-      name: 'Manchester United FC',
+      name: 'Manchester United',
       short_name: 'MUN',
       key_name: 'Man United',
       alias: [
@@ -113,7 +113,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t1.svg"
     },
     {
-      name: 'Middlesbrough FC',
+      name: 'Middlesbrough',
       short_name: 'MID',
       key_name: 'Boro',
       alias: [
@@ -123,7 +123,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t25.svg"
     },
     {
-      name: 'Southampton FC',
+      name: 'Southampton',
       short_name: 'SOU',
       key_name: 'Southampton',
       alias: [
@@ -133,7 +133,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t20.svg"
     },
     {
-      name: 'Stoke City FC',
+      name: 'Stoke City',
       short_name: 'STK',
       key_name: 'Stoke',
       alias: [
@@ -143,7 +143,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t110.svg"
     },
     {
-      name: 'Sunderland AFC',
+      name: 'Sunderland',
       short_name: 'SUN',
       key_name: 'Sunderland',
       alias: [
@@ -153,7 +153,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t56.svg"
     },
     {
-      name: 'Swansea City FC',
+      name: 'Swansea City',
       short_name: 'SWA',
       key_name: 'Swansea',
       alias: [
@@ -163,7 +163,7 @@ export default function () {
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t80.svg"
     },
     {
-      name: 'Tottenham Hotspur FC',
+      name: 'Tottenham Hotspur',
       short_name: 'TOT',
       key_name: 'Tottenham',
       alias: [
@@ -172,7 +172,7 @@ export default function () {
       ],
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t6.svg"
     },{
-      name: 'Watford FC',
+      name: 'Watford',
       short_name: 'WAT',
       key_name: 'Watford',
       alias: [
@@ -181,7 +181,7 @@ export default function () {
       ],
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t57.svg"
     },{
-      name: 'West Bromwich Albion FC',
+      name: 'West Bromwich Albion',
       short_name: 'WBA',
       key_name: 'West Brom',
       alias: [
@@ -192,7 +192,7 @@ export default function () {
       ],
       badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t35.svg"
     },{
-      name: 'West Ham United FC',
+      name: 'West Ham',
       short_name: 'WHU',
       key_name: 'West Ham',
       alias: [
