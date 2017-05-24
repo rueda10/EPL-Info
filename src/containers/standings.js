@@ -13,23 +13,19 @@ class Standings extends Component {
 
   renderTable() {
     const selectedClub = this.props.club;
-    const clubs = this.props.clubs;
-    const leagueData = this.props.leagueData;
+    var leagueData = this.props.leagueData;
+
+    leagueData.sort(function(a, b) {
+      return a.position - b.position;
+    });
 
     return leagueData.map((team) => {
-      var shortName;
-      clubs.forEach(function(club, index) {
-        if (team.teamName.toLowerCase() === club.name.toLowerCase()) {
-          shortName = club.short_name;
-        }
-      });
-
-      if (team.teamName.toLowerCase().includes(selectedClub.name.toLowerCase())) {
+      if (team.name === selectedClub.name) {
         return (
-          <Table.Row key={team.teamName} className="negative">
+          <Table.Row key={team.name} className="negative">
             <Table.Cell textAlign="center">{team.position}</Table.Cell>
-            <Table.Cell className="desktop-table">{shortName}</Table.Cell>
-            <Table.Cell className="mobile-table">{team.teamName}</Table.Cell>
+            <Table.Cell className="desktop-table">{team.short_name}</Table.Cell>
+            <Table.Cell className="mobile-table">{team.name}</Table.Cell>
             <Table.Cell textAlign="center">{team.playedGames}</Table.Cell>
             <Table.Cell textAlign="center">{team.wins}</Table.Cell>
             <Table.Cell textAlign="center">{team.draws}</Table.Cell>
@@ -42,10 +38,10 @@ class Standings extends Component {
         );
       } else {
         return (
-          <Table.Row key={team.teamName}>
+          <Table.Row key={team.name}>
             <Table.Cell textAlign="center">{team.position}</Table.Cell>
-            <Table.Cell className="desktop-table">{shortName}</Table.Cell>
-            <Table.Cell className="mobile-table">{team.teamName}</Table.Cell>
+            <Table.Cell className="desktop-table">{team.short_name}</Table.Cell>
+            <Table.Cell className="mobile-table">{team.name}</Table.Cell>
             <Table.Cell textAlign="center">{team.playedGames}</Table.Cell>
             <Table.Cell textAlign="center">{team.wins}</Table.Cell>
             <Table.Cell textAlign="center">{team.draws}</Table.Cell>
@@ -68,11 +64,9 @@ class Standings extends Component {
     }
     if (!this.props.leagueData) {
       return (
-        <div>
-          <Dimmer active inverted>
-            <Loader>Loading</Loader>
-          </Dimmer>
-        </div>
+        <Dimmer active inverted>
+          <Loader>Loading</Loader>
+        </Dimmer>
       )
     }
 
@@ -108,8 +102,7 @@ class Standings extends Component {
 function mapStateToProps(state) {
   return {
     club: state.activeClub,
-    leagueData: state.leagueData,
-    clubs: state.clubs
+    leagueData: state.leagueData
   };
 }
 

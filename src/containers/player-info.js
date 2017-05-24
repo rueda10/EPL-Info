@@ -140,7 +140,7 @@ function mapStateToProps(state) {
   return {
     club: state.activeClub,
     players: state.players,
-    clubs: state.clubs
+    clubs: state.leagueData
   };
 }
 

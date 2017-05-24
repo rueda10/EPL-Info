@@ -46,7 +46,7 @@ function mapStateToProps(state) {
   // Whatever is returned here will show up as props
   // inside of ClubNavBar
   return {
-    clubs: state.clubs
+    clubs: state.leagueData
   }
 }
 

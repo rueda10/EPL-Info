@@ -47,9 +47,15 @@ h1.ui.center.aligned.header {
   color: white;
 }
 
-/* INJURIES AND SUSPENSIONS */
-#player-news {
-  padding: 0px 0px;
+/* PLAYER NEWS */
+.ui.list .list>.item>.image:not(:only-child):not(img),
+.ui.list>.item>.image:not(:only-child):not(img) {
+  padding: 0px;
+}
+
+.ui.list .list>.item .header,
+.ui.list>.item .header {
+  cursor: pointer;
 }
 
 /* PLAYER DISPLAY */
@@ -61,7 +67,7 @@ div.ui.items {
   margin-bottom: 10px;
 }
 
-div.ui.rounded.image {
+div.ui.rounded.tiny.image {
   border: thin solid black;
 }
 
@@ -70,11 +76,6 @@ div.ui.rounded.image {
 }
 
 /* TABLE */
-#standings-table {
-  padding: 0px;
-  border: 0px;
-}
-
 .ui.celled.table tr td, .ui.celled.table tr th {
   padding: 4px;
 }
