@@ -45,12 +45,22 @@ class TeamNews extends Component {
       );
     }
 
+    var newsCells = this.renderTeamNews();
+
+    if (newsCells.every((element) =>  { return element === undefined})) {
+      newsCells = (
+        <List.Item key="nonews">
+          <List.Header>No News</List.Header>
+        </List.Item>
+      )
+    }
+
     return (
       <Card fluid color="green">
         <Card.Content header='Team News' />
         <Card.Content>
           <List celled>
-            {this.renderTeamNews()}
+            {newsCells}
           </List>
         </Card.Content>
       </Card>

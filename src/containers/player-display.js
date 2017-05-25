@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Icon, List } from 'semantic-ui-react';
+import { Icon, List, Image, Item } from 'semantic-ui-react';
 import PlayerStat from '../components/player-stat';
 
 const PHOTOS_URL = 'https://ismdj.scdn5.secure.raxcdn.com/static/plfpl/img/shirts/photos/';
@@ -91,23 +91,18 @@ class DisplayPlayer extends Component {
 
     return (
       <div>
-        <div className="ui items">
-          <div className="item">
-            <div className="ui tiny rounded image">
-              <img className="player-display-pic" src={PHOTOS_URL + player.photo} onError={this.handleImageError}/>
-            </div>
-            <div className="middle aligned content">
-              <a className="header">{player.first_name} {player.second_name}</a>
-              <div className="meta">
-                <div>{position}</div>
-                <div>{squadNumber}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          {playerInfo}
-        </div>
+        <Item.Group>
+        <Item>
+          <Item.Image size='tiny' className="rounded" src={PHOTOS_URL + player.photo} onError={this.handleImageError} />
+
+          <Item.Content>
+            <Item.Header>{player.first_name} {player.second_name}</Item.Header>
+            <Item.Meta>{position}</Item.Meta>
+            <Item.Meta>{squadNumber}</Item.Meta>
+          </Item.Content>
+        </Item>
+        </Item.Group>
+        {playerInfo}
       </div>
     );
 
@@ -124,9 +119,7 @@ class DisplayPlayer extends Component {
       </div>
     );
   }
-// code cleanup
-// testing
-// documentation
+
   handleImageError(e) {
     e.target.src = '../../images/avatar.jpg';
   }

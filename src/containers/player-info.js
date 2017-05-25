@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPlayerData } from '../actions/ajax_calls';
 import { selectPlayer } from '../actions/select_player';
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown, Dimmer, Loader, Card } from 'semantic-ui-react'
 
 import DisplayPlayer from './player-display';
 
@@ -13,7 +13,7 @@ class PlayerInfo extends Component {
   constructor(props) {
     super(props);
     this.props.fetchPlayerData();
-    this.onPlayerChange = this.onPlayerChange.bind(this);
+    this.onPlayerItemClick= this.onPlayerItemClick.bind(this);
     this.handleImageError = this.handleImageError.bind(this);
   }
 
@@ -76,10 +76,25 @@ class PlayerInfo extends Component {
 
     return (
       <div>
-        <Dropdown onChange={this.onPlayerChange} onError={this.handleImageError} text='Select Goalkeeper' fluid selection options={goalKeeperOptions} />
-        <Dropdown onChange={this.onPlayerChange} onError={this.handleImageError} text='Select Defender' fluid selection options={defenderOptions} />
-        <Dropdown onChange={this.onPlayerChange} onError={this.handleImageError} text='Select Midfielder' fluid selection options={midfielderOptions} />
-        <Dropdown onChange={this.onPlayerChange} onError={this.handleImageError} text='Select Forward' fluid selection options={forwardOptions} />
+        <Dropdown fluid text='Select Player'>
+          <Dropdown.Menu scrolling>
+            <Dropdown.Header content='Goalkeepers'/>
+            <Dropdown.Divider />
+            {goalKeeperOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
+            <Dropdown.Divider />
+            <Dropdown.Header content='Defenders'/>
+            <Dropdown.Divider />
+            {defenderOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
+            <Dropdown.Divider />
+            <Dropdown.Header content='Midfielders'/>
+            <Dropdown.Divider />
+            {midfielderOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
+            <Dropdown.Divider />
+            <Dropdown.Header content='Forwards'/>
+            <Dropdown.Divider />
+            {forwardOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
+          </Dropdown.Menu>
+        </Dropdown>
         <DisplayPlayer />
       </div>
     );
@@ -90,21 +105,10 @@ class PlayerInfo extends Component {
     e.target.src = '../../images/avatar.jpg';
   }
 
-  onPlayerChange(e, data) {
-    const playerName = data.value;
-    var playerObject;
-    data.options.forEach(function(player, index) {
-      if (player.value === data.value) {
-        playerObject = player.data;
-        return false;
-      }
-    });
-
-    if (playerObject) {
-      this.props.selectPlayer(playerObject);
+  onPlayerItemClick(data) {
+    if (data) {
+      this.props.selectPlayer(data);
     }
-
-    data.value = "Select Player";
   }
 
   render() {
@@ -113,25 +117,19 @@ class PlayerInfo extends Component {
     }
     if (!this.props.players) {
       return (
-        <div>
-          <div className="ui active inverted dimmer">
-            <div className="ui text loader">Loading</div>
-          </div>
-        </div>
+        <Dimmer active inverted>
+          <Loader>Loading</Loader>
+        </Dimmer>
       )
     }
 
     return (
-      <div className="ui fluid card">
-        <div className="content card-header">
-          <div className="header card-label">
-            Team Roster
-          </div>
-        </div>
-        <div className="content">
+      <Card fluid color="green">
+        <Card.Content header='Team Roster' />
+        <Card.Content>
           {this.renderRoster()}
-        </div>
-      </div>
+        </Card.Content>
+      </Card>
     );
   }
 }

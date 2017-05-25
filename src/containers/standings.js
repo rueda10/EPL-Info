@@ -13,13 +13,12 @@ class Standings extends Component {
 
   renderTable() {
     const selectedClub = this.props.club;
-    var leagueData = this.props.leagueData;
 
-    leagueData.sort(function(a, b) {
+    const sortedTable = Array.prototype.slice.call(this.props.leagueData).sort(function(a, b) {
       return a.position - b.position;
     });
 
-    return leagueData.map((team) => {
+    return sortedTable.map((team) => {
       if (team.name === selectedClub.name) {
         return (
           <Table.Row key={team.name} className="negative">

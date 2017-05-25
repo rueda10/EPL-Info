@@ -61,12 +61,22 @@ class PlayerNews extends Component {
       )
     }
 
+    var playerDataCells = this.renderPlayerData();
+
+    if (playerDataCells.every((element) =>  { return element === undefined})) {
+      playerDataCells = (
+        <List.Item key="nonews">
+          <List.Header>No Injuries / Suspensions</List.Header>
+        </List.Item>
+      )
+    }
+
     return (
       <Card fluid color="green">
         <Card.Content header='Injuries / Suspensions' />
         <Card.Content>
           <List celled>
-            {this.renderPlayerData()}
+            {playerDataCells}
           </List>
         </Card.Content>
       </Card>

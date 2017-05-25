@@ -3,34 +3,37 @@ import { FETCH_LEAGUE_DATA } from '../actions/ajax_calls';
 export default function(state = initialState, action) {
   switch (action.type) {
     case FETCH_LEAGUE_DATA:
-      var newStateArray = state.slice(0);
-      newStateArray.map((club) => {
-        club.position = findPropValue(action.payload.data.standing, club.name, "position");
-        club.playedGames = findPropValue(action.payload.data.standing, club.name, "playedGames");
-        club.points = findPropValue(action.payload.data.standing, club.name, "points");
-        club.goals = findPropValue(action.payload.data.standing, club.name, "goals");
-        club.goalsAgainst = findPropValue(action.payload.data.standing, club.name, "goalsAgainst");
-        club.goalDifference = findPropValue(action.payload.data.standing, club.name, "goalDifference");
-        club.wins = findPropValue(action.payload.data.standing, club.name, "wins");
-        club.draws = findPropValue(action.payload.data.standing, club.name, "draws");
-        club.losses = findPropValue(action.payload.data.standing, club.name, "losses");
-        club.home = findPropValue(action.payload.data.standing, club.name, "home");
-        club.away = findPropValue(action.payload.data.standing, club.name, "away");
-      });
+      const updatedItems = state.map(item => {
+        const teamIndex = findTeamIndex(action.payload.data.standing, item.name);
 
-      return newStateArray;
+        return {
+          ...item,
+          position: action.payload.data.standing[teamIndex]["position"],
+          playedGames: action.payload.data.standing[teamIndex]["playedGames"],
+          points: action.payload.data.standing[teamIndex]["points"],
+          goals: action.payload.data.standing[teamIndex]["goals"],
+          goalsAgainst: action.payload.data.standing[teamIndex]["goalsAgainst"],
+          goalDifference: action.payload.data.standing[teamIndex]["goalDifference"],
+          wins: action.payload.data.standing[teamIndex]["wins"],
+          draws: action.payload.data.standing[teamIndex]["draws"],
+          losses: action.payload.data.standing[teamIndex]["losses"],
+          home: action.payload.data.standing[teamIndex]["home"],
+          away: action.payload.data.standing[teamIndex]["away"]
+        }
+      })
+
+      return updatedItems;
   }
+
   return state;
 }
 
-function findPropValue(arr, propName, propValue) {
+function findTeamIndex(arr, initialTeamName) {
   for (var i=0; i < arr.length; i++) {
-    if (arr[i]['teamName'].includes(propName)) {
-      return arr[i][propValue];
+    if (arr[i]['teamName'].includes(initialTeamName)) {
+      return i;
     }
   }
-
-  // will return undefined if not found; you could return a default instead
 }
 
 const initialState = [

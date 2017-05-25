@@ -47,6 +47,12 @@ h1.ui.center.aligned.header {
   color: white;
 }
 
+/*gutter padding*/
+.ui.grid>* {
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}
+
 /* PLAYER NEWS */
 .ui.list .list>.item>.image:not(:only-child):not(img),
 .ui.list>.item>.image:not(:only-child):not(img) {
@@ -60,7 +66,7 @@ h1.ui.center.aligned.header {
 
 /* PLAYER DISPLAY */
 #player-display {
-  margin-top: 15px;
+  margin: 10px;
 }
 
 div.ui.items {
@@ -80,8 +86,27 @@ div.ui.rounded.tiny.image {
   padding: 4px;
 }
 
-/* TEAM NEWS */
+/* TEAM ROSTER */
+.ui.fluid.dropdown {
+  padding: 10px;
+  border-bottom: 2px solid rgba(34,36,38,.1);
+}
 
+.ui.fluid.dropdown>.dropdown.icon {
+  padding-top: 5px;
+}
+
+.ui.dropdown .menu>.header {
+  margin: 3px;
+}
+
+.ui.dropdown .menu>.divider {
+  margin: 0px !important;
+}
+
+.ui.dropdown .menu>.item {
+  padding: 5px !important;
+}
 
 /* MOBILE */
 @media screen and (max-width:600px){
