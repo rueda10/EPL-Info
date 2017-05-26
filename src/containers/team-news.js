@@ -50,7 +50,7 @@ class TeamNews extends Component {
     if (newsCells.every((element) =>  { return element === undefined})) {
       newsCells = (
         <List.Item key="nonews">
-          <List.Header>No News</List.Header>
+          <List.Header className="no-content">No News</List.Header>
         </List.Item>
       )
     }

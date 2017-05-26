@@ -5,13 +5,8 @@
   overflow-y: hidden;
 }
 
-#club-navbar {
-  display: -webkit-inline-box;
-  font-size: 11pt;
-}
-
 img#TOT {
-  height: 3rem;
+  height: 3.8rem;
   width: auto;
 }
 
@@ -25,9 +20,20 @@ img#TOT {
   transform: scale(1.2);
 }
 
+.ui.secondary.pointing.menu {
+  display: -webkit-inline-box;
+  font-size: 13pt;
+}
+
+.ui.secondary.pointing.menu .item {
+  margin: 0px;
+  padding: 10px;
+}
+
 /* TITLE */
 h1.ui.center.aligned.header {
-  margin: 20px;
+  margin: 15px;
+  font-size: 28pt;
 }
 
 /* CARDS */
@@ -45,6 +51,11 @@ h1.ui.center.aligned.header {
 
 .ui.fluid.card > .content > .header {
   color: white;
+}
+
+.ui.list .list>.item .header, .ui.list>.item .header.no-content {
+  margin: 10px 0px;
+  cursor: default;
 }
 
 /*gutter padding*/
@@ -97,11 +108,11 @@ div.ui.rounded.tiny.image {
 }
 
 .ui.dropdown .menu>.header {
-  margin: 3px;
-}
-
-.ui.dropdown .menu>.divider {
-  margin: 0px !important;
+  margin: 0px;
+  padding: 8px;
+  background-color: green;
+  color: white;
+  border: solid 1px rgba(34,36,38,.1);
 }
 
 .ui.dropdown .menu>.item {

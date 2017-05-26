@@ -66,7 +66,7 @@ class PlayerNews extends Component {
     if (playerDataCells.every((element) =>  { return element === undefined})) {
       playerDataCells = (
         <List.Item key="nonews">
-          <List.Header>No Injuries / Suspensions</List.Header>
+          <List.Header className="no-content">No Injuries / Suspensions</List.Header>
         </List.Item>
       )
     }

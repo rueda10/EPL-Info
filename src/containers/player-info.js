@@ -75,28 +75,18 @@ class PlayerInfo extends Component {
     });
 
     return (
-      <div>
-        <Dropdown fluid text='Select Player'>
-          <Dropdown.Menu scrolling>
-            <Dropdown.Header content='Goalkeepers'/>
-            <Dropdown.Divider />
-            {goalKeeperOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
-            <Dropdown.Divider />
-            <Dropdown.Header content='Defenders'/>
-            <Dropdown.Divider />
-            {defenderOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
-            <Dropdown.Divider />
-            <Dropdown.Header content='Midfielders'/>
-            <Dropdown.Divider />
-            {midfielderOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
-            <Dropdown.Divider />
-            <Dropdown.Header content='Forwards'/>
-            <Dropdown.Divider />
-            {forwardOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
-          </Dropdown.Menu>
-        </Dropdown>
-        <DisplayPlayer />
-      </div>
+      <Dropdown scrolling upward fluid text="Select Player">
+        <Dropdown.Menu>
+          <Dropdown.Header content="Goalkeepers"/>
+          {goalKeeperOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
+          <Dropdown.Header content="Defenders"/>
+          {defenderOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
+          <Dropdown.Header content="Midfielders"/>
+          {midfielderOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
+          <Dropdown.Header content="Forwards"/>
+          {forwardOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
+        </Dropdown.Menu>
+      </Dropdown>
     );
 
   }
@@ -129,6 +119,7 @@ class PlayerInfo extends Component {
         <Card.Content>
           {this.renderRoster()}
         </Card.Content>
+        <DisplayPlayer />
       </Card>
     );
   }
