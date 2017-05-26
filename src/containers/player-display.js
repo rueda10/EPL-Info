@@ -95,7 +95,7 @@ class DisplayPlayer extends Component {
           <Item>
             <Item.Image size='tiny' className="rounded" src={PHOTOS_URL + player.photo} onError={this.handleImageError} />
 
-            <Item.Content>
+            <Item.Content verticalAlign="bottom">
               <Item.Header>{player.first_name} {player.second_name}</Item.Header>
               <Item.Meta>{position}</Item.Meta>
               <Item.Meta>{squadNumber}</Item.Meta>
@@ -121,6 +121,7 @@ class DisplayPlayer extends Component {
   }
 
   handleImageError(e) {
+    e.target.onerror = null;
     e.target.src = '../../images/avatar.jpg';
   }
 }

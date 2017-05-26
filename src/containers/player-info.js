@@ -92,7 +92,10 @@ class PlayerInfo extends Component {
   }
 
   handleImageError(e) {
-    e.target.src = '../../images/avatar.jpg';
+    if (e.type === "error") {
+      e.target.onerror = null;
+      e.target.src = '../../images/avatar.jpg';
+    }
   }
 
   onPlayerItemClick(data) {
@@ -114,7 +117,7 @@ class PlayerInfo extends Component {
     }
 
     return (
-      <Card fluid color="green">
+      <Card fluid>
         <Card.Content header='Team Roster' />
         <Card.Content>
           {this.renderRoster()}

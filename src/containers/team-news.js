@@ -56,7 +56,7 @@ class TeamNews extends Component {
     }
 
     return (
-      <Card fluid color="green">
+      <Card fluid>
         <Card.Content header='Team News' />
         <Card.Content>
           <List celled>

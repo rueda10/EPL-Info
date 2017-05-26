@@ -1,5 +1,5 @@
 /* TEAM NAV */
-#nav-container {
+div.nav-container {
   text-align: center;
   overflow-x: auto;
   overflow-y: hidden;
@@ -10,11 +10,11 @@ img#TOT {
   width: auto;
 }
 
-#nav-container div.item {
+.ui.secondary.pointing.menu .item {
   cursor: pointer;
 }
 
-#nav-container div.item:hover {
+.ui.secondary.pointing.menu .item:hover {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
@@ -58,6 +58,10 @@ h1.ui.center.aligned.header {
   cursor: default;
 }
 
+.ui.card, .ui.cards>.card {
+  border: 1px solid green;
+}
+
 /*gutter padding*/
 .ui.grid>* {
   padding-left: 0.5rem !important;
@@ -93,6 +97,11 @@ div.ui.rounded.tiny.image {
 }
 
 /* TABLE */
+.ui.table {
+  margin: 0px;
+  border-radius: 0px;
+}
+
 .ui.celled.table tr td, .ui.celled.table tr th {
   padding: 4px;
 }
@@ -117,6 +126,19 @@ div.ui.rounded.tiny.image {
 
 .ui.dropdown .menu>.item {
   padding: 5px !important;
+}
+
+/* PLAYER DISPLAY */
+.ui.items>.item>.image+.content {
+  padding-left: 0.5em;
+}
+
+.ui.items>.item>.content>.header:not(.ui) {
+  margin-top: 2px;
+}
+
+.ui.items>.item .meta {
+  margin: .4em 0;
 }
 
 /* MOBILE */

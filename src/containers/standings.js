@@ -70,7 +70,7 @@ class Standings extends Component {
     }
 
     return (
-      <Card fluid color="green">
+      <Card fluid>
         <Card.Content header='Standings' />
         <Card.Content>
           <Table celled compact unstackable striped>

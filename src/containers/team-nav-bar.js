@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectClub } from '../actions/select_club';
 import { selectPlayer } from '../actions/select_player';
+import { Menu } from 'semantic-ui-react'
 import { bindActionCreators } from 'redux';
 
 class ClubNavBar extends Component {
@@ -15,13 +16,12 @@ class ClubNavBar extends Component {
   renderNavBar() {
     return this.props.clubs.map((club) => {
       return (
-        <div
+        <Menu.Item
           onClick={this.onBadgeClick.bind(this, club)}
           key={club.key_name}
-          className="item"
           title={club.name}>
             <img className="badge-icon" id={club.short_name} src={club.badge} />
-        </div>
+        </Menu.Item>
       );
     });
   }
@@ -33,10 +33,10 @@ class ClubNavBar extends Component {
 
   render() {
     return (
-      <div id="nav-container">
-        <nav className="ui secondary pointing menu" id="club-navbar">
-          {this.renderNavBar()}
-        </nav>
+      <div className="nav-container">
+        <Menu pointing secondary>
+            {this.renderNavBar()}
+        </Menu>
       </div>
     );
   }

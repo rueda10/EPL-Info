@@ -46,6 +46,7 @@ class PlayerNews extends Component {
   }
 
   handleImageError(e) {
+    e.target.onerror = null;
     e.target.src = '../../images/avatar.jpg';
   }
 
@@ -72,7 +73,7 @@ class PlayerNews extends Component {
     }
 
     return (
-      <Card fluid color="green">
+      <Card fluid>
         <Card.Content header='Injuries / Suspensions' />
         <Card.Content>
           <List celled>
