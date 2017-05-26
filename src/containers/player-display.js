@@ -93,9 +93,9 @@ class DisplayPlayer extends Component {
       <div>
         <Item.Group>
           <Item>
-            <Item.Image size='tiny' className="rounded" src={PHOTOS_URL + player.photo} onError={this.handleImageError} />
+            <Item.Image size='small' className="rounded" src={PHOTOS_URL + player.photo} onError={this.handleImageError} />
 
-            <Item.Content verticalAlign="bottom">
+            <Item.Content verticalAlign="middle">
               <Item.Header>{player.first_name} {player.second_name}</Item.Header>
               <Item.Meta>{position}</Item.Meta>
               <Item.Meta>{squadNumber}</Item.Meta>

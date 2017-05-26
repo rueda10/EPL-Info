@@ -3,6 +3,7 @@ div.nav-container {
   text-align: center;
   overflow-x: auto;
   overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 img#TOT {
@@ -88,8 +89,8 @@ div.ui.items {
   margin-bottom: 10px;
 }
 
-div.ui.rounded.tiny.image {
-  border: thin solid black;
+div.ui.rounded.small.image {
+  border: 2px solid green;
 }
 
 .ui.selection.dropdown .menu>.item {
@@ -126,19 +127,6 @@ div.ui.rounded.tiny.image {
 
 .ui.dropdown .menu>.item {
   padding: 5px !important;
-}
-
-/* PLAYER DISPLAY */
-.ui.items>.item>.image+.content {
-  padding-left: 0.5em;
-}
-
-.ui.items>.item>.content>.header:not(.ui) {
-  margin-top: 2px;
-}
-
-.ui.items>.item .meta {
-  margin: .4em 0;
 }
 
 /* MOBILE */
