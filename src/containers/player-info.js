@@ -75,7 +75,7 @@ class PlayerInfo extends Component {
     });
 
     return (
-      <Dropdown scrolling upward fluid text="Select Player">
+      <Dropdown scrolling fluid text="Select Player">
         <Dropdown.Menu>
           <Dropdown.Header content="Goalkeepers"/>
           {goalKeeperOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
