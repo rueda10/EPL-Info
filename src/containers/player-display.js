@@ -21,66 +21,23 @@ class DisplayPlayer extends Component {
     var games = Math.round(player.minutes / 90);
     var minutesPlayersContent = `${player.minutes} (${games} Games)`;
 
-    if (player.element_type === 1) {
-      position = 'Goalkeeper';
-      playerInfo = (
-        <List>
-          <PlayerStat label="Minutes" content={minutesPlayersContent} />
-          <PlayerStat label="Saves" content={player.saves} />
-          <PlayerStat label="Penalties Saved" content={player.penalties_saved} />
-          <PlayerStat label="Clean Sheets" content={player.clean_sheets} />
-          <PlayerStat label="Goals Conceded" content={player.goals_conceded} />
-          <PlayerStat label="Own Goals" content={player.own_goals} />
-          <PlayerStat label="Yellow Cards" content={player.yellow_cards} />
-          <PlayerStat label="Red Cards" content={player.red_cards} />
-          <PlayerStat label="Points Per Game" content={player.points_per_game} />
-        </List>
-      )
-    } else if (player.element_type === 2) {
-      position = 'Defender';
-      playerInfo = (
-        <List>
-          <PlayerStat label="Minutes" content={minutesPlayersContent} />
-          <PlayerStat label="Clean Sheets" content={player.clean_sheets} />
-          <PlayerStat label="Goals Conceded" content={player.goals_conceded} />
-          <PlayerStat label="Own Goals" content={player.own_goals} />
-          <PlayerStat label="Goals Scored" content={player.goals_scored} />
-          <PlayerStat label="Penalties Missed" content={player.penalties_missed} />
-          <PlayerStat label="Assists" content={player.assists} />
-          <PlayerStat label="Yellow Cards" content={player.yellow_cards} />
-          <PlayerStat label="Red Cards" content={player.red_cards} />
-          <PlayerStat label="Points Per Game" content={player.points_per_game} />
-        </List>
-      )
-    } else if (player.element_type === 3) {
-      position = 'Midfielder';
-      playerInfo = (
-        <List>
-          <PlayerStat label="Minutes" content={minutesPlayersContent} />
-          <PlayerStat label="Goals Scored" content={player.goals_scored} />
-          <PlayerStat label="Penalties Missed" content={player.penalties_missed} />
-          <PlayerStat label="Assists" content={player.assists} />
-          <PlayerStat label="Own Goals" content={player.own_goals} />
-          <PlayerStat label="Yellow Cards" content={player.yellow_cards} />
-          <PlayerStat label="Red Cards" content={player.red_cards} />
-          <PlayerStat label="Points Per Game" content={player.points_per_game} />
-        </List>
-      )
-    } else if (player.element_type === 4) {
-      position = 'Forward';
-      playerInfo = (
-        <List>
-          <PlayerStat label="Minutes" content={minutesPlayersContent} />
-          <PlayerStat label="Goals Scored" content={player.goals_scored} />
-          <PlayerStat label="Penalties Missed" content={player.penalties_missed} />
-          <PlayerStat label="Assists" content={player.assists} />
-          <PlayerStat label="Own Goals" content={player.own_goals} />
-          <PlayerStat label="Yellow Cards" content={player.yellow_cards} />
-          <PlayerStat label="Red Cards" content={player.red_cards} />
-          <PlayerStat label="Points Per Game" content={player.points_per_game} />
-        </List>
-      )
-    }
+    const { element_type } = player;
+    playerInfo = (
+      <List>
+        <PlayerStat label="Minutes" content={minutesPlayersContent} />
+        { element_type === 1 && <PlayerStat label="Saves" content={player.saves} /> }
+        { element_type === 1 && <PlayerStat label="Penalties Saved" content={player.penalties_saved} /> }
+        { (element_type === 1 || element_type === 2) && <PlayerStat label="Clean Sheets" content={player.clean_sheets} /> }
+        { (element_type === 1 || element_type === 2) && <PlayerStat label="Goals Conceded" content={player.goals_conceded} /> }
+        { (element_type === 2 || element_type === 3 || element_type === 4) && <PlayerStat label="Goals Scored" content={player.goals_scored} /> }
+        { (element_type === 2 || element_type === 3 || element_type === 4) && <PlayerStat label="Penalties Missed" content={player.penalties_missed} /> }
+        { (element_type === 2 || element_type === 3 || element_type === 4) && <PlayerStat label="Assists" content={player.assists} /> }
+        <PlayerStat label="Own Goals" content={player.own_goals} />
+        <PlayerStat label="Yellow Cards" content={player.yellow_cards} />
+        <PlayerStat label="Red Cards" content={player.red_cards} />
+        <PlayerStat label="Points Per Game" content={player.points_per_game} />
+      </List>
+    );
 
     var squadNumber = player.squad_number;
     if (squadNumber === null) {

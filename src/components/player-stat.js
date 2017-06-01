@@ -6,7 +6,7 @@ export default (props) => {
     <List.Item as='div'>
       <Icon name='right triangle' />
       <List.Content>
-        <List.Header>{props.label}: {props.content}</List.Header>
+        <List.Description><strong>{props.label}:</strong> {props.content}</List.Description>
       </List.Content>
     </List.Item>
   )

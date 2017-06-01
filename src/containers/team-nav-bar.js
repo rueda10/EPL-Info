@@ -11,13 +11,20 @@ class ClubNavBar extends Component {
 
     this.onBadgeClick = this.onBadgeClick.bind(this);
     this.props.selectClub(this.props.clubs[0]);
+    this.state = {
+      activeItem: 'ARS'
+    }
   }
 
   renderNavBar() {
+    const { activeItem } = this.state;
+
     return this.props.clubs.map((club) => {
       return (
         <Menu.Item
           onClick={this.onBadgeClick.bind(this, club)}
+          name={club.short_name}
+          active={activeItem === club.short_name}
           key={club.key_name}
           title={club.name}>
             <img className="badge-icon" id={club.short_name} src={club.badge} />
@@ -29,6 +36,9 @@ class ClubNavBar extends Component {
   onBadgeClick(club) {
     this.props.selectClub(club);
     this.props.selectPlayer(null);
+    this.setState({
+      activeItem: club.short_name
+    });
   }
 
   render() {

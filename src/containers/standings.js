@@ -19,40 +19,23 @@ class Standings extends Component {
     });
 
     return sortedTable.map((team) => {
-      if (team.name === selectedClub.name) {
-        return (
-          <Table.Row key={team.name} className="negative">
-            <Table.Cell textAlign="center">{team.position}</Table.Cell>
-            <Table.Cell className="desktop-table">{team.short_name}</Table.Cell>
-            <Table.Cell className="mobile-table">{team.name}</Table.Cell>
-            <Table.Cell textAlign="center">{team.playedGames}</Table.Cell>
-            <Table.Cell textAlign="center">{team.wins}</Table.Cell>
-            <Table.Cell textAlign="center">{team.draws}</Table.Cell>
-            <Table.Cell textAlign="center">{team.losses}</Table.Cell>
-            <Table.Cell textAlign="center">{team.goals}</Table.Cell>
-            <Table.Cell textAlign="center">{team.goalsAgainst}</Table.Cell>
-            <Table.Cell textAlign="center">{team.goalDifference}</Table.Cell>
-            <Table.Cell textAlign="center">{team.points}</Table.Cell>
-          </Table.Row>
-        );
-      } else {
-        return (
-          <Table.Row key={team.name}>
-            <Table.Cell textAlign="center">{team.position}</Table.Cell>
-            <Table.Cell className="desktop-table">{team.short_name}</Table.Cell>
-            <Table.Cell className="mobile-table">{team.name}</Table.Cell>
-            <Table.Cell textAlign="center">{team.playedGames}</Table.Cell>
-            <Table.Cell textAlign="center">{team.wins}</Table.Cell>
-            <Table.Cell textAlign="center">{team.draws}</Table.Cell>
-            <Table.Cell textAlign="center">{team.losses}</Table.Cell>
-            <Table.Cell textAlign="center">{team.goals}</Table.Cell>
-            <Table.Cell textAlign="center">{team.goalsAgainst}</Table.Cell>
-            <Table.Cell textAlign="center">{team.goalDifference}</Table.Cell>
-            <Table.Cell textAlign="center">{team.points}</Table.Cell>
-          </Table.Row>
-        );
-      }
+      const className = `${team.name === selectedClub.name ? 'negative' : ''}`;
 
+      return (
+        <Table.Row key={team.name} className={className}>
+          <Table.Cell textAlign="center">{team.position}</Table.Cell>
+          <Table.Cell className="desktop-table">{team.short_name}</Table.Cell>
+          <Table.Cell className="mobile-table">{team.name}</Table.Cell>
+          <Table.Cell textAlign="center">{team.playedGames}</Table.Cell>
+          <Table.Cell textAlign="center">{team.wins}</Table.Cell>
+          <Table.Cell textAlign="center">{team.draws}</Table.Cell>
+          <Table.Cell textAlign="center">{team.losses}</Table.Cell>
+          <Table.Cell textAlign="center">{team.goals}</Table.Cell>
+          <Table.Cell textAlign="center">{team.goalsAgainst}</Table.Cell>
+          <Table.Cell textAlign="center">{team.goalDifference}</Table.Cell>
+          <Table.Cell textAlign="center">{team.points}</Table.Cell>
+        </Table.Row>
+      );
     });
 
   }

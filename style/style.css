@@ -7,28 +7,29 @@ div.nav-container {
 }
 
 img#TOT {
-  height: 3.8rem;
+  height: 3.3rem;
   width: auto;
 }
 
 .ui.secondary.pointing.menu .item {
   cursor: pointer;
+  padding: 10px;
 }
 
 .ui.secondary.pointing.menu .item:hover {
-  -webkit-transform: scale(1.2);
+  /*-webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
-  transform: scale(1.2);
+  transform: scale(1.2);*/
+  border-color: darkred;
 }
 
 .ui.secondary.pointing.menu {
   display: -webkit-inline-box;
-  font-size: 13pt;
+  font-size: 12pt;
 }
 
-.ui.secondary.pointing.menu .item {
-  margin: 0px;
-  padding: 10px;
+.ui.secondary.pointing.menu .item.active {
+  border-color: green;
 }
 
 /* TITLE */
