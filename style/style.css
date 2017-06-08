@@ -6,6 +6,12 @@ div.nav-container {
   -webkit-overflow-scrolling: touch;
 }
 
+.team-badge > .content:first-child {
+  background-color: white;
+  color: black;
+  padding: 10px;
+}
+
 img#TOT {
   height: 3.3rem;
   width: auto;
@@ -17,10 +23,10 @@ img#TOT {
 }
 
 .ui.secondary.pointing.menu .item:hover {
-  /*-webkit-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
-  transform: scale(1.2);*/
-  border-color: darkred;
+  transform: scale(1.2);
+  /*border-color: darkred;*/
 }
 
 .ui.secondary.pointing.menu {
@@ -44,7 +50,7 @@ h1.ui.center.aligned.header {
   border: 0px;
 }
 
-.content:first-child {
+.ui.fluid.card .content:first-child {
   background-color: green !important;
   padding: 10px 10px 6px 10px !important;
   border-radius: .28571429rem .28571429rem 0 0!important;
@@ -130,27 +136,41 @@ div.ui.rounded.small.image {
   padding: 5px !important;
 }
 
+/* IMAGES */
+.ui.list .list>.item>.image img, .ui.list>.item>.image img {
+  height: 29.61px;
+  width: 35px;
+}
+
+.ui.dropdown .menu>.item>.image, .ui.dropdown .menu>.item>img, .ui.dropdown>.text>.image, .ui.dropdown>.text>img {
+  width: 35px;
+}
+
+.ui.header>.image:not(.icon), .ui.header>img {
+  width: 150px;
+}
+
 /* MOBILE */
 @media screen and (max-width:600px){
-    .mobile-table {
-        display: none;
-    }
+  .mobile-table {
+      display: none;
+  }
 }
 
 @media screen and (min-width:600px) and (max-width:768px){
-    .desktop-table {
-        display: none;
-    }
+  .desktop-table {
+      display: none;
+  }
 }
 
 @media screen and (min-width:768px) and (max-width:990px){
-    .mobile-table {
-        display: none;
-    }
+  .mobile-table {
+      display: none;
+  }
 }
 
 @media screen and (min-width:990px){
-    .desktop-table {
-        display: none;
-    }
+  .desktop-table {
+      display: none;
+  }
 }

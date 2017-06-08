@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectClub } from '../actions/select_club';
 import { selectPlayer } from '../actions/select_player';
-import { Menu } from 'semantic-ui-react'
+import { Menu, Popup } from 'semantic-ui-react'
 import { bindActionCreators } from 'redux';
 
 class ClubNavBar extends Component {
@@ -18,17 +18,26 @@ class ClubNavBar extends Component {
 
   renderNavBar() {
     const { activeItem } = this.state;
+    const style = {
+      borderRadius: 0,
+      padding: '0em',
+    }
 
     return this.props.clubs.map((club) => {
       return (
-        <Menu.Item
-          onClick={this.onBadgeClick.bind(this, club)}
-          name={club.short_name}
-          active={activeItem === club.short_name}
+        <Popup
+          className="team-badge"
           key={club.key_name}
-          title={club.name}>
-            <img className="badge-icon" id={club.short_name} src={club.badge} />
-        </Menu.Item>
+          style={style}
+          position="bottom center"
+          trigger={<Menu.Item
+            onClick={this.onBadgeClick.bind(this, club)}
+            name={club.short_name}
+            active={activeItem === club.short_name}>
+              <img className="badge-icon" id={club.short_name} src={club.badge} />
+          </Menu.Item>}
+          content={club.name}
+        />
       );
     });
   }

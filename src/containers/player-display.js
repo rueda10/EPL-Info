@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Icon, List, Image, Item } from 'semantic-ui-react';
+import { Icon, List, Image, Header } from 'semantic-ui-react';
 import PlayerStat from '../components/player-stat';
 
 const PHOTOS_URL = 'https://ismdj.scdn5.secure.raxcdn.com/static/plfpl/img/shirts/photos/';
@@ -14,10 +14,10 @@ class DisplayPlayer extends Component {
 
   renderPlayerData() {
     const player = this.props.activePlayer;
-    var goalkeeperStats;
 
     var position;
     var playerInfo;
+    var squadNumber = player.squad_number;
     var games = Math.round(player.minutes / 90);
     var minutesPlayersContent = `${player.minutes} (${games} Games)`;
 
@@ -39,26 +39,30 @@ class DisplayPlayer extends Component {
       </List>
     );
 
-    var squadNumber = player.squad_number;
+    // squad number
     if (squadNumber === null) {
       squadNumber = 'N/A';
     } else {
       squadNumber = `#${squadNumber}`;
     }
 
+    // position
+    if ( element_type === 1 ) { position = 'Goalkeeper'}
+    else if ( element_type === 2) { position = 'Defender'}
+    else if ( element_type === 3) { position = 'Midfielder'}
+    else if ( element_type === 4) { position = 'Forward'}
+
     return (
       <div>
-        <Item.Group>
-          <Item>
-            <Item.Image size='small' className="rounded" src={PHOTOS_URL + player.photo} onError={this.handleImageError} />
-
-            <Item.Content verticalAlign="middle">
-              <Item.Header>{player.first_name} {player.second_name}</Item.Header>
-              <Item.Meta>{position}</Item.Meta>
-              <Item.Meta>{squadNumber}</Item.Meta>
-            </Item.Content>
-          </Item>
-        </Item.Group>
+        <Header as="h2" icon textAlign="center">
+          <Image shape='circular' src={PHOTOS_URL + player.photo} onError={this.handleImageError} />
+          <Header.Content>
+            {' '}{player.first_name} {player.second_name}
+            <Header.Subheader>
+              {position} {squadNumber}
+            </Header.Subheader>
+          </Header.Content>
+        </Header>
         {playerInfo}
       </div>
     );
