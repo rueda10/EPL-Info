@@ -30,6 +30,7 @@ class ClubNavBar extends Component {
           key={club.key_name}
           style={style}
           position="bottom center"
+          hideOnScroll="true"
           trigger={<Menu.Item
             onClick={this.onBadgeClick.bind(this, club)}
             name={club.short_name}
