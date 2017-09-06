@@ -1,39 +1,42 @@
 import { FETCH_LEAGUE_DATA } from '../actions/ajax_calls';
 
 export default function(state = initialState, action) {
-  switch (action.type) {
-    case FETCH_LEAGUE_DATA:
-      const updatedItems = state.map(item => {
-        const teamIndex = findTeamIndex(action.payload.data.standing, item.name);
+    switch (action.type) {
+        case FETCH_LEAGUE_DATA:
+            const updatedItems = state.map(item => {
+                const teamIndex = findTeamIndex(action.payload.data.standing, item.name, item.key_name);
 
-        return {
-          ...item,
-          position: action.payload.data.standing[teamIndex]["position"],
-          playedGames: action.payload.data.standing[teamIndex]["playedGames"],
-          points: action.payload.data.standing[teamIndex]["points"],
-          goals: action.payload.data.standing[teamIndex]["goals"],
-          goalsAgainst: action.payload.data.standing[teamIndex]["goalsAgainst"],
-          goalDifference: action.payload.data.standing[teamIndex]["goalDifference"],
-          wins: action.payload.data.standing[teamIndex]["wins"],
-          draws: action.payload.data.standing[teamIndex]["draws"],
-          losses: action.payload.data.standing[teamIndex]["losses"],
-          home: action.payload.data.standing[teamIndex]["home"],
-          away: action.payload.data.standing[teamIndex]["away"]
-        }
-      })
+                return {
+                    ...item,
+                    position: action.payload.data.standing[teamIndex].position,
+                    playedGames: action.payload.data.standing[teamIndex].playedGames,
+                    points: action.payload.data.standing[teamIndex].points,
+                    goals: action.payload.data.standing[teamIndex].goals,
+                    goalsAgainst: action.payload.data.standing[teamIndex].goalsAgainst,
+                    goalDifference: action.payload.data.standing[teamIndex].goalDifference,
+                    wins: action.payload.data.standing[teamIndex].wins,
+                    draws: action.payload.data.standing[teamIndex].draws,
+                    losses: action.payload.data.standing[teamIndex].losses,
+                    home: action.payload.data.standing[teamIndex].home,
+                    away: action.payload.data.standing[teamIndex].away
+                }
+            });
 
-      return updatedItems;
-  }
+            return updatedItems;
+        default:
+            return state;
+    }
 
-  return state;
+    return state;
 }
 
-function findTeamIndex(arr, initialTeamName) {
-  for (var i=0; i < arr.length; i++) {
-    if (arr[i]['teamName'].includes(initialTeamName)) {
-      return i;
+function findTeamIndex(arr, initialTeamName, keyName) {
+    for (var i=0; i < arr.length; i++) {
+        if (arr[i].teamName.includes(initialTeamName) ||
+            arr[i].teamName.includes(keyName)) {
+            return i;
+        }
     }
-  }
 }
 
 const initialState = [
@@ -56,6 +59,16 @@ const initialState = [
       'cherries'
     ],
     badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t91.svg"
+  },
+  {
+    name: 'Brighton and Hove Albion',
+    short_name: 'BHA',
+    key_name: 'Brighton',
+    alias: [
+      'brighton',
+      'seagulls'
+    ],
+    badge: 'https://platform-static-files.s3.amazonaws.com/premierleague/badges/t36.svg'
   },
   {
     name: 'Burnley',
@@ -98,14 +111,14 @@ const initialState = [
     badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t11.svg"
   },
   {
-    name: 'Hull City',
-    short_name: 'HUL',
-    key_name: 'Hull',
+    name: 'Huddersfield Town',
+    short_name: 'HUD',
+    key_name: 'Huddersfield',
     alias: [
-      'hull',
-      'tigers'
+      'huddersfield',
+      'terriers'
     ],
-    badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t88.svg"
+    badge: 'https://platform-static-files.s3.amazonaws.com/premierleague/badges/t38.svg'
   },
   {
     name: 'Leicester City',
@@ -150,14 +163,14 @@ const initialState = [
     badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t1.svg"
   },
   {
-    name: 'Middlesbrough',
-    short_name: 'MID',
-    key_name: 'Boro',
+    name: 'Newcastle United',
+    short_name: 'NEW',
+    key_name: 'Newcastle',
     alias: [
-      'middlesbrough',
-      'boro'
+      'newcastle',
+      'magpies'
     ],
-    badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t25.svg"
+    badge: 'https://platform-static-files.s3.amazonaws.com/premierleague/badges/t4.svg'
   },
   {
     name: 'Southampton',
@@ -178,16 +191,6 @@ const initialState = [
       'potters'
     ],
     badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t110.svg"
-  },
-  {
-    name: 'Sunderland',
-    short_name: 'SUN',
-    key_name: 'Sunderland',
-    alias: [
-      'sunderland',
-      'black cats'
-    ],
-    badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t56.svg"
   },
   {
     name: 'Swansea City',
@@ -226,7 +229,6 @@ const initialState = [
     alias: [
       'west bromwich',
       'west brom',
-      'albion',
       'baggies'
     ],
     badge: "https://platform-static-files.s3.amazonaws.com/premierleague/badges/t35.svg"

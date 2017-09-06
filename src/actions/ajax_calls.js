@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const FOOTBALL_DATA_API_KEY = '43d2319104c54b0c9cf2d5679ab2ae5d';
 const GUARDIAN_API_KEY = 'b8e5013c-f10c-474c-9cf6-b9416ae989ef';
-const FOOTBALL_DATA_BASE_URL = 'https://api.football-data.org/v1/competitions/426/leagueTable?matchday=38';
+const FOOTBALL_DATA_BASE_URL = 'https://api.football-data.org/v1/competitions/445/leagueTable';
 const GUARDIAN_BASE_URL = `https://content.guardianapis.com/search?section=football&page-size=50&api-key=${GUARDIAN_API_KEY}`;
 const JOKECAMP_BASE_URL = 'https://jokecamp.github.io/epl-fantasy-geek/js/static-data.json';
 

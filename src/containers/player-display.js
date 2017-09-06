@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Icon, List, Image, Header } from 'semantic-ui-react';
 import PlayerStat from '../components/player-stat';
 

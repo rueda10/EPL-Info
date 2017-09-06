@@ -17,6 +17,11 @@ img#TOT {
   width: auto;
 }
 
+img#HUD {
+  height: 3.8rem;
+  width: auto;
+}
+
 .ui.secondary.pointing.menu .item {
   cursor: pointer;
   padding: 10px;
@@ -134,6 +139,11 @@ div.ui.rounded.small.image {
 
 .ui.dropdown .menu>.item {
   padding: 5px !important;
+}
+
+/* TEAM STATS */
+.team-stat-value {
+    float: right;
 }
 
 /* IMAGES */
