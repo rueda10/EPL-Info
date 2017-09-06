@@ -25,20 +25,12 @@ class ClubNavBar extends Component {
 
     return this.props.clubs.map((club) => {
       return (
-        <Popup
-          className="team-badge"
-          key={club.key_name}
-          style={style}
-          position="bottom center"
-          hideOnScroll
-          trigger={<Menu.Item
+        <Menu.Item
             onClick={this.onBadgeClick.bind(this, club)}
             name={club.short_name}
             active={activeItem === club.short_name}>
-              <img className="badge-icon" id={club.short_name} src={club.badge} />
-          </Menu.Item>}
-          content={club.name}
-        />
+          <img className="badge-icon" id={club.short_name} src={club.badge} />
+        </Menu.Item>
       );
     });
   }
