@@ -42,7 +42,7 @@ class Standings extends Component {
 
   render() {
     if (!this.props.club) {
-      return <div></div>
+      return <div />
     }
     if (!this.props.leagueData) {
       return (

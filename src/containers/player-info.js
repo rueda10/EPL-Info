@@ -10,22 +10,28 @@ import DisplayPlayer from './player-display';
 const PHOTOS_URL = 'https://ismdj.scdn5.secure.raxcdn.com/static/plfpl/img/shirts/photos/';
 
 class PlayerInfo extends Component {
+  static handleImageError(e) {
+      if (e.type === "error") {
+          e.target.onerror = null;
+          e.target.src = '../../images/avatar.jpg';
+      }
+  }
+
   constructor(props) {
     super(props);
     this.props.fetchPlayerData();
     this.onPlayerItemClick= this.onPlayerItemClick.bind(this);
-    this.handleImageError = this.handleImageError.bind(this);
   }
 
   renderRoster() {
     const teams = this.props.players.teams;
     const players = this.props.players.elements;
     const selectedClub = this.props.club;
-    var teamId = -1;
-    var goalKeeperOptions = [];
-    var defenderOptions = [];
-    var midfielderOptions = [];
-    var forwardOptions = [];
+    let teamId = -1;
+    let goalKeeperOptions = [];
+    let defenderOptions = [];
+    let midfielderOptions = [];
+    let forwardOptions = [];
 
     teams.forEach(function(team, index) {
       if (selectedClub.short_name.toLowerCase() === team.short_name.toLowerCase()) {
@@ -36,7 +42,7 @@ class PlayerInfo extends Component {
 
     players.forEach(function(player, index) {
       if (teamId === player.team_code) {
-        var squadNumber = player.squad_number;
+        let squadNumber = player.squad_number;
         if (squadNumber === null) {
           squadNumber = 'N/A';
         }
@@ -47,7 +53,7 @@ class PlayerInfo extends Component {
           value: `${player.first_name} ${player.second_name}`,
           image: { avatar: true, src: `${PHOTOS_URL}${player.photo}` },
           data: player
-        }
+        };
 
         if (player.element_type === 1) {
           goalKeeperOptions.push(playerOption);
@@ -91,13 +97,6 @@ class PlayerInfo extends Component {
 
   }
 
-  handleImageError(e) {
-    if (e.type === "error") {
-      e.target.onerror = null;
-      e.target.src = '../../images/avatar.jpg';
-    }
-  }
-
   onPlayerItemClick(data) {
     if (data) {
       this.props.selectPlayer(data);
@@ -106,7 +105,7 @@ class PlayerInfo extends Component {
 
   render() {
     if (!this.props.club) {
-      return <div></div>
+      return <div />
     }
     if (!this.props.players) {
       return (

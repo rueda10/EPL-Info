@@ -17,7 +17,7 @@ class TeamNews extends Component {
     const selectedClub = this.props.selectedClub;
 
     return news.map((headline) => {
-      for (var i = 0; i < selectedClub.alias.length; i++) {
+      for (let i = 0; i < selectedClub.alias.length; i++) {
         if (headline.webTitle.toLowerCase().includes(selectedClub.alias[i].toLowerCase()) ||
             headline.webUrl.toLowerCase().includes(selectedClub.alias[i].toLowerCase())) {
               return (
@@ -33,7 +33,7 @@ class TeamNews extends Component {
 
   render() {
     if (!this.props.selectedClub) {
-      return <div></div>;
+      return <div />;
     }
     if (!this.props.teamNews) {
       return (
@@ -45,7 +45,7 @@ class TeamNews extends Component {
       );
     }
 
-    var newsCells = this.renderTeamNews();
+    let newsCells = this.renderTeamNews();
 
     if (newsCells.every((element) =>  { return element === undefined})) {
       newsCells = (

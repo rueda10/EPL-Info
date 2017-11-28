@@ -8,6 +8,11 @@ import { Dimmer, Loader, Card, Item, List } from 'semantic-ui-react'
 const PHOTOS_URL = 'https://ismdj.scdn5.secure.raxcdn.com/static/plfpl/img/shirts/photos/';
 
 class PlayerNews extends Component {
+  static handleImageError(e) {
+      e.target.onerror = null;
+      e.target.src = '../../images/avatar.jpg';
+  }
+
   constructor(props) {
     super(props);
 
@@ -18,7 +23,7 @@ class PlayerNews extends Component {
     const teams = this.props.players.teams;
     const players = this.props.players.elements;
     const selectedClub = this.props.club;
-    var teamId = -1;
+    let teamId = -1;
 
     teams.forEach(function(team, index) {
       if (selectedClub.short_name.toLowerCase() === team.short_name.toLowerCase()) {
@@ -45,14 +50,9 @@ class PlayerNews extends Component {
 
   }
 
-  handleImageError(e) {
-    e.target.onerror = null;
-    e.target.src = '../../images/avatar.jpg';
-  }
-
   render() {
     if (!this.props.club) {
-      return <div></div>
+      return <div />
     }
     if (!this.props.players) {
       return (
@@ -62,7 +62,7 @@ class PlayerNews extends Component {
       )
     }
 
-    var playerDataCells = this.renderPlayerData();
+    let playerDataCells = this.renderPlayerData();
 
     if (playerDataCells.every((element) =>  { return element === undefined})) {
       playerDataCells = (

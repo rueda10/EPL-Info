@@ -14,11 +14,11 @@ class DisplayPlayer extends Component {
   renderPlayerData() {
     const player = this.props.activePlayer;
 
-    var position;
-    var playerInfo;
-    var squadNumber = player.squad_number;
-    var games = Math.round(player.minutes / 90);
-    var minutesPlayersContent = `${player.minutes} (${games} Games)`;
+    let position;
+    let playerInfo;
+    let squadNumber = player.squad_number;
+    let games = Math.round(player.minutes / 90);
+    let minutesPlayersContent = `${player.minutes} (${games} Games)`;
 
     const { element_type } = player;
     playerInfo = (
@@ -70,7 +70,7 @@ class DisplayPlayer extends Component {
 
   render() {
     if (!this.props.activePlayer) {
-      return <div></div>
+      return <div />
     }
 
     return (

@@ -18,14 +18,11 @@ class ClubNavBar extends Component {
 
   renderNavBar() {
     const { activeItem } = this.state;
-    const style = {
-      borderRadius: 0,
-      padding: '0em',
-    }
 
     return this.props.clubs.map((club) => {
       return (
         <Menu.Item
+            key={club.badge}
             onClick={this.onBadgeClick.bind(this, club)}
             name={club.short_name}
             active={activeItem === club.short_name}>
