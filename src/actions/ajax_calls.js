@@ -11,35 +11,35 @@ export const FETCH_TEAM_NEWS = 'FETCH_TEAM_NEWS';
 export const FETCH_PLAYER_DATA = 'FETCH_PLAYER_DATA';
 
 export function fetchTeamNews() {
-  const request = axios.get(GUARDIAN_BASE_URL);
-
-  return {
-    type: FETCH_TEAM_NEWS,
-    payload: request
-  };
+    const request = axios.get(GUARDIAN_BASE_URL);
+    
+    return {
+        type: FETCH_TEAM_NEWS,
+        payload: request
+    };
 }
 
 export function fetchPlayerData() {
-  const request = axios.get(JOKECAMP_BASE_URL);
-
-  return {
-    type: FETCH_PLAYER_DATA,
-    payload: request
-  };
+    const request = axios.get(JOKECAMP_BASE_URL);
+    
+    return {
+        type: FETCH_PLAYER_DATA,
+        payload: request
+    };
 }
 
 export function fetchLeagueData() {
-  const request = axios({
-    method: 'get',
-    url: FOOTBALL_DATA_BASE_URL,
-    headers: {
-      'X-Auth-Token': FOOTBALL_DATA_API_KEY
-    },
-    dataType: 'json'
-  });
-
-  return {
-    type: FETCH_LEAGUE_DATA,
-    payload: request
-  }
+    const request = axios({
+        method: 'get',
+        url: FOOTBALL_DATA_BASE_URL,
+        headers: {
+            'X-Auth-Token': FOOTBALL_DATA_API_KEY
+        },
+        dataType: 'json'
+    });
+    
+    return {
+        type: FETCH_LEAGUE_DATA,
+        payload: request
+    }
 }
