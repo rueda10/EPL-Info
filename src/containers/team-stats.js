@@ -1,25 +1,24 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Dimmer, Loader, Card, Item, List} from 'semantic-ui-react';
+import {Dimmer, Loader, Card, Item, List, Accordion} from 'semantic-ui-react';
 
 class TeamStats extends Component {
     constructor(props) {
         super(props);
     }
     
-    renderHomeAwayForm() {
+    getHomeFormContent() {
         if (this.props.leagueData) {
             const team = this.props.leagueData.filter((item) => {
                 return item.key_name === this.props.selectedClub.key_name;
             })[0];
-            
-            if (!team.home && !team.away) {
-                return <div/>
+        
+            if (!team.home) {
+                return null;
             }
-            
-            const home = (
-                <Item key={`${team.name}_home_form`}>
-                    <Item.Header>Home Form</Item.Header>
+        
+            const content = (
+                <Item>
                     <Item.Description>Wins <span className="team-stat-value">{team.home.wins}</span></Item.Description>
                     <Item.Description>Losses <span
                         className="team-stat-value">{team.home.losses}</span></Item.Description>
@@ -31,10 +30,28 @@ class TeamStats extends Component {
                         className="team-stat-value">{team.home.goalsAgainst}</span></Item.Description>
                 </Item>
             );
+        
+            return {
+                title: "Home Form",
+                content
+            };
+        }
+    
+        return null;
+    }
+    
+    getAwayFormContent() {
+        if (this.props.leagueData) {
+            const team = this.props.leagueData.filter((item) => {
+                return item.key_name === this.props.selectedClub.key_name;
+            })[0];
             
-            const away = (
-                <Item key={`${team.name}_away_form`}>
-                    <Item.Header>Away Form</Item.Header>
+            if (!team.away) {
+                return null;
+            }
+            
+            const content = (
+                <Item>
                     <Item.Description>Wins <span className="team-stat-value">{team.away.wins}</span></Item.Description>
                     <Item.Description>Losses <span
                         className="team-stat-value">{team.away.losses}</span></Item.Description>
@@ -47,13 +64,16 @@ class TeamStats extends Component {
                 </Item>
             );
             
-            return [home, away];
+            return {
+                title: "Away Form",
+                content
+            };
         }
         
-        return <div/>;
+        return null;
     }
     
-    renderTopScorers(teamId, players) {
+    getTopScorersContent(teamId, players) {
         const currentTeamPlayers = players.filter((player) => {
             return teamId === player.team_code;
         }).sort((a, b) => {
@@ -67,25 +87,29 @@ class TeamStats extends Component {
                 return -1;
             }
         });
-        
-        const topScorers = currentTeamPlayers.slice(0, 5).map((player) => {
+    
+        const topScorers = currentTeamPlayers.map((player) => {
             if (player.goals_scored > 0) {
                 return <Item.Description key={`${player.id} goals scored`}>{player.first_name} {player.second_name}
                     <span className="team-stat-value">{player.goals_scored}</span></Item.Description>
             }
         });
         
-        return (
+        const content = (
             <Item>
-                <Item.Header>Top Scorer(s)</Item.Header>
                 {topScorers.every((element) => {
                     return element === undefined
                 }) ? 'No scorers' : topScorers}
             </Item>
-        )
+        );
+        
+        return {
+            title: "Top Scorers",
+            content
+        }
     }
     
-    renderTopAssisters(teamId, players) {
+    getTopAssistsContent(teamId, players) {
         const currentTeamPlayers = players.filter((player) => {
             return teamId === player.team_code;
         }).sort((a, b) => {
@@ -99,25 +123,29 @@ class TeamStats extends Component {
                 return -1;
             }
         });
-        
-        const topAssisters = currentTeamPlayers.slice(0, 5).map((player) => {
+    
+        const topAssists = currentTeamPlayers.map((player) => {
             if (player.assists > 0) {
                 return <Item.Description key={`${player.id} goals assisted`}>{player.first_name} {player.second_name}
                     <span className="team-stat-value">{player.assists}</span></Item.Description>
             }
         });
         
-        return (
+        const content = (
             <Item>
-                <Item.Header>Top Assists</Item.Header>
-                {topAssisters.every((element) => {
+                {topAssists.every((element) => {
                     return element === undefined
-                }) ? 'No assisters' : topAssisters}
+                }) ? 'No assisters' : topAssists}
             </Item>
-        )
+        );
+    
+        return {
+            title: "Top Assists",
+            content
+        }
     }
     
-    renderTopPointsPerGame(teamId, players) {
+    getTopPointsPerGameContent(teamId, players) {
         const currentTeamPlayers = players.filter((player) => {
             return teamId === player.team_code;
         }).sort((a, b) => {
@@ -131,25 +159,29 @@ class TeamStats extends Component {
                 return -1;
             }
         });
-        
-        const topPointsPerGame = currentTeamPlayers.slice(0, 5).map((player) => {
+    
+        const topPointsPerGame = currentTeamPlayers.map((player) => {
             if (player.points_per_game > 0) {
                 return <Item.Description key={`${player.id} points per game`}>{player.first_name} {player.second_name}
                     <span className="team-stat-value">{player.points_per_game}</span></Item.Description>
             }
         });
         
-        return (
+        const content = (
             <Item>
-                <Item.Header>Top Points per Game</Item.Header>
                 {topPointsPerGame.every((element) => {
                     return element === undefined
                 }) ? 'No players with points' : topPointsPerGame}
             </Item>
-        )
+        );
+        
+        return {
+            title: 'Top Points per Game',
+            content
+        }
     }
     
-    renderLeastGoalsConceded(teamId, players) {
+    getLeastGoalsConcededContent(teamId, players) {
         const currentTeamPlayers = players.filter((player) => {
             return teamId === player.team_code && (player.element_type === 1 || player.element_type === 2);
         }).sort((a, b) => {
@@ -163,22 +195,26 @@ class TeamStats extends Component {
                 return -1;
             }
         }).reverse();
-        
+    
         const leastGoalsConceded = currentTeamPlayers.filter((player) => {
             return player.points_per_game > 0;
-        }).slice(0, 5).map((player) => {
+        }).map((player) => {
             return <Item.Description key={`${player.id} goals conceded`}>{player.first_name} {player.second_name} <span
                 className="team-stat-value">{player.goals_conceded}</span></Item.Description>
         });
         
-        return (
+        const content = (
             <Item>
-                <Item.Header>Least Goals Conceded</Item.Header>
                 {leastGoalsConceded.every((element) => {
                     return element === undefined
                 }) ? 'No players' : leastGoalsConceded}
             </Item>
-        )
+        );
+        
+        return {
+            title: 'Least Goals Conceded',
+            content
+        }
     }
     
     render() {
@@ -207,17 +243,27 @@ class TeamStats extends Component {
             }
         });
         
+        const homeForm = this.getHomeFormContent();
+        const awayForm = this.getAwayFormContent();
+        const topScorers = this.getTopScorersContent(teamId, players.elements);
+        const topAssists = this.getTopAssistsContent(teamId, players.elements);
+        const topPointsPerGame = this.getTopPointsPerGameContent(teamId, players.elements);
+        const leastGoalsConceded = this.getLeastGoalsConcededContent(teamId, players.elements);
+        let panels = [];
+        if (homeForm) {
+            panels.push(homeForm);
+            panels.push(awayForm);
+            panels.push(topScorers);
+            panels.push(topAssists);
+            panels.push(topPointsPerGame);
+            panels.push(leastGoalsConceded);
+        }
+        
         return (
             <Card fluid>
-                <Card.Content header='Team Stats'/>
+                <Card.Content header='Team Statistics'/>
                 <Card.Content>
-                    <List celled>
-                        {this.renderHomeAwayForm(teamId, players.teams)}
-                        {this.renderTopScorers(teamId, players.elements)}
-                        {this.renderTopAssisters(teamId, players.elements)}
-                        {this.renderTopPointsPerGame(teamId, players.elements)}
-                        {this.renderLeastGoalsConceded(teamId, players.elements)}
-                    </List>
+                    <Accordion defaultActiveIndex={[0, 1]} panels={panels} exclusive={false} styled />
                 </Card.Content>
             </Card>
         );

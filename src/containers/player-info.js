@@ -128,7 +128,7 @@ class PlayerInfo extends Component {
         
         return (
             <Card fluid>
-                <Card.Content header='Team Roster'/>
+                <Card.Content header='Squad'/>
                 <Card.Content>
                     {this.renderRoster()}
                 </Card.Content>

@@ -1,144 +1,144 @@
 /* TEAM NAV */
 div.nav-container {
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
+    text-align: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 .team-badge > .content:first-child {
-  background-color: white;
-  color: black;
-  padding: 10px;
+    background-color: white;
+    color: black;
+    padding: 10px;
 }
 
 img#TOT {
-  height: 3.3rem;
-  width: auto;
+    height: 3.3rem;
+    width: auto;
 }
 
 img#HUD {
-  height: 3.8rem;
-  width: auto;
+    height: 3.8rem;
+    width: auto;
 }
 
 .ui.secondary.pointing.menu .item {
-  cursor: pointer;
-  padding: 10px;
+    cursor: pointer;
+    padding: 10px;
 }
 
 .ui.secondary.pointing.menu .item:hover {
-  -webkit-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  transform: scale(1.2);
-  /*border-color: darkred;*/
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    /*border-color: darkred;*/
 }
 
 .ui.secondary.pointing.menu {
-  display: -webkit-inline-box;
-  font-size: 12pt;
+    display: -webkit-inline-box;
+    font-size: 12pt;
 }
 
 .ui.secondary.pointing.menu .item.active {
-  border-color: green;
+    border-color: green;
 }
 
 /* TITLE */
 h1.ui.center.aligned.header {
-  margin: 15px;
-  font-size: 28pt;
+    margin: 15px;
+    font-size: 28pt;
 }
 
 /* CARDS */
 .ui.fluid.card > .content {
-  padding: 0px 0px;
-  border: 0px;
+    padding: 0px 0px;
+    border: 0px;
 }
 
 .ui.fluid.card .content:first-child {
-  background-color: green !important;
-  padding: 10px 10px 6px 10px !important;
-  border-radius: .28571429rem .28571429rem 0 0!important;
-  border-top: none!important;
+    background-color: green !important;
+    padding: 10px 10px 6px 10px !important;
+    border-radius: .28571429rem .28571429rem 0 0 !important;
+    border-top: none !important;
 }
 
 .ui.fluid.card > .content > .header {
-  color: white;
+    color: white;
 }
 
-.ui.list .list>.item .header, .ui.list>.item .header.no-content {
-  margin: 10px 0px;
-  cursor: default;
+.ui.list .list > .item .header, .ui.list > .item .header.no-content {
+    margin: 10px 0px;
+    cursor: default;
 }
 
-.ui.card, .ui.cards>.card {
-  border: 1px solid green;
+.ui.card, .ui.cards > .card {
+    border: 1px solid green;
 }
 
 /*gutter padding*/
-.ui.grid>* {
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
+.ui.grid > * {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
 }
 
 /* PLAYER NEWS */
-.ui.list .list>.item>.image:not(:only-child):not(img),
-.ui.list>.item>.image:not(:only-child):not(img) {
-  padding: 0px;
+.ui.list .list > .item > .image:not(:only-child):not(img),
+.ui.list > .item > .image:not(:only-child):not(img) {
+    padding: 0px;
 }
 
-.ui.list .list>.item .header,
-.ui.list>.item .header {
-  cursor: pointer;
+.ui.list .list > .item .header,
+.ui.list > .item .header {
+    cursor: pointer;
 }
 
 /* PLAYER DISPLAY */
 #player-display {
-  margin: 10px;
+    margin: 10px;
 }
 
 div.ui.items {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 div.ui.rounded.small.image {
-  border: 2px solid green;
+    border: 2px solid green;
 }
 
-.ui.selection.dropdown .menu>.item {
-  padding: 3px 15px !important;
+.ui.selection.dropdown .menu > .item {
+    padding: 3px 15px !important;
 }
 
 /* TABLE */
 .ui.table {
-  margin: 0px;
-  border-radius: 0px;
+    margin: 0px;
+    border-radius: 0px;
 }
 
 .ui.celled.table tr td, .ui.celled.table tr th {
-  padding: 4px;
+    padding: 4px;
 }
 
 /* TEAM ROSTER */
 .ui.fluid.dropdown {
-  padding: 10px;
-  border-bottom: 2px solid rgba(34,36,38,.1);
+    padding: 10px;
+    border-bottom: 2px solid rgba(34, 36, 38, .1);
 }
 
-.ui.fluid.dropdown>.dropdown.icon {
-  padding-top: 5px;
+.ui.fluid.dropdown > .dropdown.icon {
+    padding-top: 5px;
 }
 
-.ui.dropdown .menu>.header {
-  margin: 0px;
-  padding: 8px;
-  background-color: green;
-  color: white;
-  border: solid 1px rgba(34,36,38,.1);
+.ui.dropdown .menu > .header {
+    margin: 0px;
+    padding: 8px;
+    background-color: green;
+    color: white;
+    border: solid 1px rgba(34, 36, 38, .1);
 }
 
-.ui.dropdown .menu>.item {
-  padding: 5px !important;
+.ui.dropdown .menu > .item {
+    padding: 5px !important;
 }
 
 /* TEAM STATS */
@@ -146,41 +146,54 @@ div.ui.rounded.small.image {
     float: right;
 }
 
+.ui.styled.accordion .accordion .title, .ui.styled.accordion .title {
+    color: black;
+    padding: .5em 0;
+}
+
+.ui.styled.accordion .accordion .active.title, .ui.styled.accordion .active.title {
+    border-bottom: solid thin rgba(34,36,38,.15);
+}
+
+.ui.styled.accordion .accordion .content, .ui.styled.accordion .content {
+    padding: .2em 1em;
+}
+
 /* IMAGES */
-.ui.list .list>.item>.image img, .ui.list>.item>.image img {
-  height: 29.61px;
-  width: 35px;
+.ui.list .list > .item > .image img, .ui.list > .item > .image img {
+    height: 29.61px;
+    width: 35px;
 }
 
-.ui.dropdown .menu>.item>.image, .ui.dropdown .menu>.item>img, .ui.dropdown>.text>.image, .ui.dropdown>.text>img {
-  width: 35px;
+.ui.dropdown .menu > .item > .image, .ui.dropdown .menu > .item > img, .ui.dropdown > .text > .image, .ui.dropdown > .text > img {
+    width: 35px;
 }
 
-.ui.header>.image:not(.icon), .ui.header>img {
-  width: 150px;
+.ui.header > .image:not(.icon), .ui.header > img {
+    width: 150px;
 }
 
 /* MOBILE */
-@media screen and (max-width:600px){
-  .mobile-table {
-      display: none;
-  }
+@media screen and (max-width: 600px) {
+    .mobile-table {
+        display: none;
+    }
 }
 
-@media screen and (min-width:600px) and (max-width:768px){
-  .desktop-table {
-      display: none;
-  }
+@media screen and (min-width: 600px) and (max-width: 768px) {
+    .desktop-table {
+        display: none;
+    }
 }
 
-@media screen and (min-width:768px) and (max-width:990px){
-  .mobile-table {
-      display: none;
-  }
+@media screen and (min-width: 768px) and (max-width: 990px) {
+    .mobile-table {
+        display: none;
+    }
 }
 
-@media screen and (min-width:990px){
-  .desktop-table {
-      display: none;
-  }
+@media screen and (min-width: 990px) {
+    .desktop-table {
+        display: none;
+    }
 }
