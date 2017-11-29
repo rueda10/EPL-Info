@@ -37,7 +37,7 @@ class PlayerNews extends Component {
         if (player.status === "i" || player.status === "d" || player.status === "s") {
           return (
             <Item key={player.code}>
-              <Item.Image src={PHOTOS_URL + player.photo} shape="rounded" size="mini" onError={this.handleImageError} verticalAlign="middle" ui centered bordered />
+              <Item.Image src={PHOTOS_URL + player.photo} shape="rounded" size="mini" onError={PlayerNews.handleImageError} verticalAlign="middle" ui centered bordered />
               <Item.Content>
                 <Item.Header onClick={() => this.props.selectPlayer(player)}>{player.first_name} {player.second_name}</Item.Header>
                 <Item.Description>{player.news}</Item.Description>

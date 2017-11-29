@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Icon, List, Image, Header } from 'semantic-ui-react';
+import { Item, Image, Header } from 'semantic-ui-react';
 import PlayerStat from '../components/player-stat';
 
 const PHOTOS_URL = 'https://ismdj.scdn5.secure.raxcdn.com/static/plfpl/img/shirts/photos/';
@@ -22,20 +22,19 @@ class DisplayPlayer extends Component {
 
     const { element_type } = player;
     playerInfo = (
-      <List>
-        <PlayerStat label="Minutes" content={minutesPlayersContent} />
-        { element_type === 1 && <PlayerStat label="Saves" content={player.saves} /> }
-        { element_type === 1 && <PlayerStat label="Penalties Saved" content={player.penalties_saved} /> }
-        { (element_type === 1 || element_type === 2) && <PlayerStat label="Clean Sheets" content={player.clean_sheets} /> }
-        { (element_type === 1 || element_type === 2) && <PlayerStat label="Goals Conceded" content={player.goals_conceded} /> }
-        { (element_type === 2 || element_type === 3 || element_type === 4) && <PlayerStat label="Goals Scored" content={player.goals_scored} /> }
-        { (element_type === 2 || element_type === 3 || element_type === 4) && <PlayerStat label="Penalties Missed" content={player.penalties_missed} /> }
-        { (element_type === 2 || element_type === 3 || element_type === 4) && <PlayerStat label="Assists" content={player.assists} /> }
-        <PlayerStat label="Own Goals" content={player.own_goals} />
-        <PlayerStat label="Yellow Cards" content={player.yellow_cards} />
-        <PlayerStat label="Red Cards" content={player.red_cards} />
-        <PlayerStat label="Points Per Game" content={player.points_per_game} />
-      </List>
+      <Item.Extra>
+        <PlayerStat iconName="time" iconColor="black" label="Minutes" content={minutesPlayersContent} />
+        { element_type === 1 && <PlayerStat iconName="hand paper" iconColor="black" label="Saves" content={player.saves} /> }
+        { element_type === 1 && <PlayerStat iconName="child" iconColor="black" label="Penalties Saved" content={player.penalties_saved} /> }
+        { (element_type === 1 || element_type === 2) && <PlayerStat iconName="lock" iconColor="black" label="Clean Sheets" content={player.clean_sheets} /> }
+        { (element_type === 1 || element_type === 2) && <PlayerStat iconName="unlock" iconColor="black" label="Goals Conceded" content={player.goals_conceded} /> }
+        { (element_type === 1 || element_type === 2) && <PlayerStat iconName="soccer" iconColor="red" label="Own Goals" content={player.own_goals} /> }
+        { (element_type === 2 || element_type === 3 || element_type === 4) && <PlayerStat iconName="soccer" iconColor="black" label="Goals Scored" content={player.goals_scored} /> }
+        { (element_type === 2 || element_type === 3 || element_type === 4) && <PlayerStat iconName="life ring" iconColor="red"label="Assists" content={player.assists} /> }
+        <PlayerStat iconName="stop" iconColor="yellow" label="Yellow Cards" content={player.yellow_cards} />
+        <PlayerStat iconName="stop" iconColor="red" label="Red Cards" content={player.red_cards} />
+        <PlayerStat iconName="line graph" iconColor="black" label="Points Per Game" content={player.points_per_game} />
+      </Item.Extra>
     );
 
     // squad number
@@ -54,12 +53,12 @@ class DisplayPlayer extends Component {
     return (
       <div>
         <Header as="h2" icon textAlign="center">
-          <Image shape='circular' src={PHOTOS_URL + player.photo} onError={this.handleImageError} />
+          <Image rounded bordered src={PHOTOS_URL + player.photo} onError={this.handleImageError} />
           <Header.Content>
-            {' '}{player.first_name} {player.second_name}
-            <Header.Subheader>
-              {position} {squadNumber}
-            </Header.Subheader>
+              {`${player.first_name} ${player.second_name}`}
+                <Header.Subheader>
+                    {`${position} ${squadNumber}`}
+                </Header.Subheader>
           </Header.Content>
         </Header>
         {playerInfo}

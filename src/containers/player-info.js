@@ -84,13 +84,13 @@ class PlayerInfo extends Component {
       <Dropdown scrolling fluid text="Select Player">
         <Dropdown.Menu>
           <Dropdown.Header content="Goalkeepers"/>
-          {goalKeeperOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
+          {goalKeeperOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={PlayerInfo.handleImageError}/>)}
           <Dropdown.Header content="Defenders"/>
-          {defenderOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
+          {defenderOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={PlayerInfo.handleImageError}/>)}
           <Dropdown.Header content="Midfielders"/>
-          {midfielderOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
+          {midfielderOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={PlayerInfo.handleImageError}/>)}
           <Dropdown.Header content="Forwards"/>
-          {forwardOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={this.handleImageError}/>)}
+          {forwardOptions.map((player) => <Dropdown.Item key={player.value} image={player.image.src} content={player.text} onClick={() => this.onPlayerItemClick(player.data)} onError={PlayerInfo.handleImageError}/>)}
         </Dropdown.Menu>
       </Dropdown>
     );
